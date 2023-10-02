@@ -23,4 +23,8 @@ public class GameManager : MonoBehaviour
     {
         instance.gameState.Value = GameState.Menu_Idle;
     }
+    public void RefreshState()
+    {
+        Debug.Log("RefreshState");
+    }
 }

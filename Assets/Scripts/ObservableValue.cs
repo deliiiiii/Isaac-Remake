@@ -26,13 +26,13 @@ public class ObservableValue<T>
                 return;
             if (typeof(T) == typeof(int) && (int.Parse(value.ToString()) < 0))
                 return;
-            OnValueChangeEvent?.Invoke(this.value, value, this.valueType);
             this.value = value;
+            OnValueChangeEvent?.Invoke(this.value, value, this.valueType);
         }
     }
     public void OnValueChange(T oldValue, T newValue, int valueType)
     {
-        //Debug.Log("oldValue = " + oldValue + " newValue = " + newValue);
+        
         //if (valueType == 0 && typeof(T) == typeof(int) && int.Parse(newValue.ToString()) >= 2)
         //{
         //    //Debug.Log("int达到数值2 ！！");
@@ -41,11 +41,25 @@ public class ObservableValue<T>
         //{
         //    //Debug.Log("float达到数值0.2f ！！");
         //}
+        
         switch(valueType)
         {
+            case 0://根据UI/战斗状态进行更新
+            {
+                GameManager.instance.RefreshState();
+                break;
+            }
+            case 1://更新血量UI
+            {
+                Character.RefreshHPUI();
+                break;
+            }
             case 2://更新Item UI
+            {
                 ItemManager.instance.RefreshItemUI();
                 break;
+            }
+                
             default:
                 break;
         }

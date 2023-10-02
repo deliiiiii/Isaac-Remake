@@ -7,9 +7,9 @@ public class ItemManager : MonoBehaviour
 {
     public static ItemManager instance;
 
-    private ObservableValue<int> count_penny;
-    private ObservableValue<int> count_bomb;
-    private ObservableValue<int> count_key;
+    private ObservableValue<int> count_penny = new ObservableValue<int>(0, 2);
+    private ObservableValue<int> count_bomb = new ObservableValue<int>(1, 2);
+    private ObservableValue<int> count_key = new ObservableValue<int>(0, 2);
 
     public Text text_penny;
     public Text text_bomb;
@@ -17,11 +17,8 @@ public class ItemManager : MonoBehaviour
 
     private void Awake()
     {
-        count_penny = new ObservableValue<int>(-1, 2);
-        count_bomb = new ObservableValue<int>(-1, 2);
-        count_key = new ObservableValue<int>(-1, 2);
-        instance = this; 
-        Initialize();
+        instance = this;
+        RefreshItemUI();
     }
     private void Update()
     {
@@ -31,12 +28,6 @@ public class ItemManager : MonoBehaviour
             instance.count_bomb.Value++;
         if (Input.GetKeyDown(KeyCode.Alpha3))
             instance.count_key.Value++;
-    }
-    private void Initialize()
-    {
-        //instance.count_penny.Value = 0;
-        //instance.count_bomb.Value = 1;
-        instance.count_key.Value = 0;
     }
 
     public void RefreshItemUI()

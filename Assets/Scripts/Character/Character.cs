@@ -158,4 +158,9 @@ public class Character : MonoBehaviour
         if (name != null)
             anim.SetBool(name, true);
     }
+
+    public static void RefreshHPUI()
+    {
+        Debug.Log("RefreshHPUI");
+    }
 }
