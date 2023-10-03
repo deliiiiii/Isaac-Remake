@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Character : MonoBehaviour
 {
@@ -24,88 +25,88 @@ public class Character : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
-    protected enum STATE
+    public enum STATE
     {
         Idling,
         Moving,
+        ChangingRoom,
         Dead
     }
-    protected enum TYPE
+    public enum TYPE
     {
         player,
         enemy
     }
-    protected STATE currentState;
-    protected TYPE type;
+    public ObservableValue<STATE> currentState;
+    public TYPE type;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        currentState = new(STATE.Idling,6);
     }
-    protected void Start()
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        curHP = new ObservableValue<float>(1.0f, 1);
-        tempHP = new ObservableValue<float>(0, 1);
-        blackHP = new ObservableValue<float>(0, 1);
+        if(collision.gameObject.CompareTag("Item"))
+        {
+            Debug.Log("colliding Item : " + collision.gameObject.GetComponent<Item>().index);
+            ItemManager.instance.prefab_item[collision.gameObject.GetComponent<Item>().index].count.Value += collision.gameObject.GetComponent<Item>().value;
+            Destroy(collision.gameObject);
+        }
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Door") && currentState.Value != STATE.ChangingRoom)
+        {
+            currentState.Value = STATE.ChangingRoom;
+            int dir = collision.transform.GetSiblingIndex();
+            transform.position = RoomManager.instance.MoveRoom(dir);
+        }
     }
     public virtual void InputMove()
     {
-        if(currentState == STATE.Dead)
+        if(currentState.Value == STATE.Dead || currentState.Value == STATE.ChangingRoom)
         {
             return;
         }
         if(Input.GetKey(KeyCode.W))
         {
             rb.velocity = new Vector2(rb.velocity.x, moveSpeed);
-            currentState = STATE.Moving;
+            currentState.Value = STATE.Moving;
             SetAnim_Move("Move_W");
         }
         if(Input.GetKey(KeyCode.S))
         {
             rb.velocity = new Vector2(rb.velocity.x,-moveSpeed);
-            currentState = STATE.Moving;
+            currentState.Value = STATE.Moving;
             SetAnim_Move("Move_S");
         }
 
         if(Input.GetKey(KeyCode.A))
         {
             rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
-            currentState = STATE.Moving;
+            currentState.Value = STATE.Moving;
             SetAnim_Move("Move_A");
         }
         if(Input.GetKey(KeyCode.D))
         {
             rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-            currentState = STATE.Moving;
+            currentState.Value = STATE.Moving;
             SetAnim_Move("Move_D");
         }
 
-        if(currentState == STATE.Moving)
+        if(currentState.Value == STATE.Moving)
         {
             if(rb.velocity != Vector2.zero) 
             {
-                float t_x = rb.velocity.x, t_y = rb.velocity.y;
-                if(t_x > 0)
-                {
-                    t_x = t_x - frictionSpeed.x > 0 ? t_x - frictionSpeed.x : 0;
-                }
-                else
-                {
-                    t_x = t_x + frictionSpeed.x < 0 ? t_x + frictionSpeed.x : 0;
-                }
-                if (t_y > 0)
-                {
-                    t_y = t_y - frictionSpeed.y > 0 ? t_y - frictionSpeed.y : 0;
-                }
-                else
-                {
-                    t_y = t_y + frictionSpeed.y < 0 ? t_y + frictionSpeed.y : 0;
-                }
-                rb.velocity = new Vector2 (t_x, t_y);
+                FrictionSlowDown();
             }
             else
             {
-                currentState = STATE.Idling;
+                currentState.Value = STATE.Idling;
                 SetAnim_Move(null);
                 anim.SetTrigger("Idle");
             }
@@ -149,7 +150,29 @@ public class Character : MonoBehaviour
         }
         
     }
-    private void SetAnim_Move(string name)
+    private void FrictionSlowDown()
+    {
+        float t_x = rb.velocity.x, t_y = rb.velocity.y;
+        if (t_x > 0)
+        {
+            t_x = t_x - frictionSpeed.x > 0 ? t_x - frictionSpeed.x : 0;
+        }
+        else
+        {
+            t_x = t_x + frictionSpeed.x < 0 ? t_x + frictionSpeed.x : 0;
+        }
+        if (t_y > 0)
+        {
+            t_y = t_y - frictionSpeed.y > 0 ? t_y - frictionSpeed.y : 0;
+        }
+        else
+        {
+            t_y = t_y + frictionSpeed.y < 0 ? t_y + frictionSpeed.y : 0;
+        }
+        rb.velocity = new Vector2(t_x, t_y);
+    }
+
+    public void SetAnim_Move(string name)
     {
         anim.SetBool("Move_W", false);
         anim.SetBool("Move_S", false);
@@ -159,7 +182,7 @@ public class Character : MonoBehaviour
             anim.SetBool(name, true);
     }
 
-    public static void RefreshHPUI()
+    public void RefreshHPUI()
     {
         Debug.Log("RefreshHPUI");
     }

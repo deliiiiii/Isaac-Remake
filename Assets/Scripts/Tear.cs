@@ -9,7 +9,7 @@ public class Tear : MonoBehaviour
 
     public float fallingSpeed;
     public float fallingAcceleration;
-
+    public bool isDestroyed;
     public Character user;
     public GameObject tear_Shade;
 
@@ -23,11 +23,12 @@ public class Tear : MonoBehaviour
         rangeCount = 0;
         fallingSpeed = 0f;
         fallingAcceleration = 9.8f;
+        isDestroyed = false;
         //tear_Shade.transform.position = new Vector3(0f, -height / user.tearSize, 0f);
     }
     private void FixedUpdate()
     {
-        if(!gameObject.activeSelf)
+        if(!gameObject.activeSelf || isDestroyed)
             return;
 
         if(rangeCount < user.tearRange)
@@ -38,16 +39,16 @@ public class Tear : MonoBehaviour
             transform.position = new Vector3 (transform.position.x, transform.position.y - fallingSpeed*Time.deltaTime, transform.position.z);
             transform.GetChild(0).position = new Vector3(transform.GetChild(0).position.x, transform.GetChild(0).position.y + fallingSpeed * Time.deltaTime, transform.GetChild(0).position.z);
             if (transform.position.y < transform.GetChild(0).position.y + 0.1f)
-                Destroy(gameObject);
+                Anim_before_Destroy();
         }
     }
     public void GenerateTear(GameObject user,int direction)
     {
         this.user = user.GetComponent<Character>();
-        int[,] dir = new int[2, 5]
+        float[,] dir = new float[2, 5]
         {
-            {0,0,0,-1,1},
-            {0,1,-1,0,0}
+            {0,0,0,-0.6f,0.6f},
+            {0,0.6f,-0.6f,0,0}
         };
         GameObject gene_tear = Instantiate(gameObject, new Vector3(user.transform.position.x + dir[0,direction], user.transform.position.y + dir[1, direction], transform.position.z), Quaternion.identity);
         gene_tear.SetActive(true);
@@ -58,13 +59,23 @@ public class Tear : MonoBehaviour
             -user.GetComponent<Character>().c_height / user.GetComponent<Character>().tearSize,
             0f
             );
+        gene_tear.GetComponent<Tear>().tear_Shade.transform.localScale = new Vector3(0.5f,0.2f,1f);
         gene_tear.GetComponent<Rigidbody2D>().velocity = new Vector2
             (
             user.GetComponent<Rigidbody2D>().velocity.x/ user.GetComponent<Character>().tearSpeedDivisionWhileMoving + dir[0, direction] * user.GetComponent<Character>().tearSpeed,
             user.GetComponent<Rigidbody2D>().velocity.y/ user.GetComponent<Character>().tearSpeedDivisionWhileMoving + dir[1, direction] * user.GetComponent<Character>().tearSpeed
             );
-        //Debug.Log("ultimate Speed.x = " + (user.GetComponent<Rigidbody2D>().velocity.x / user.GetComponent<Character>().tearSpeedDivisionWhileMoving + dir[0, direction] * user.GetComponent<Character>().tearSpeed));
+    }
 
-        
+    void Anim_before_Destroy()
+    {
+        isDestroyed = true;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Animator>().SetTrigger("OnDestroy");
+        GetComponent<CircleCollider2D>().enabled = false;
+    }
+    void Anim_after_Destroy() 
+    {
+        Destroy(gameObject);
     }
 }

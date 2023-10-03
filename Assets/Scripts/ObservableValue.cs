@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 public class ObservableValue<T>
@@ -51,7 +53,7 @@ public class ObservableValue<T>
             }
             case 1://更新血量UI
             {
-                Character.RefreshHPUI();
+                GameManager.instance.player.RefreshHPUI();
                 break;
             }
             case 2://更新Item UI
@@ -59,10 +61,38 @@ public class ObservableValue<T>
                 ItemManager.instance.RefreshItemUI();
                 break;
             }
-                
+            case 4://更新摄像头位置
+            {
+                    Debug.Log(CameraController.instance == null);
+                CameraController.instance.CallRefreshPosition();
+                break;
+            }
+            case 5://更新房门状态
+            {
+                RoomManager.instance.RefreshDoorState();
+                break;
+            }
+            case 6://更新角色状态
+            {
+                if(typeof(T) == typeof(Character.STATE))
+                {
+                    if (newValue.Equals(Character.STATE.Idling))
+                    {
+                        GameManager.instance.player.GetComponent<BoxCollider2D>().enabled = true;
+                        GameManager.instance.player.GetComponent<CircleCollider2D>().enabled = true;
+                    }
+                    if(newValue.Equals(Character.STATE.ChangingRoom))
+                    {
+                        GameManager.instance.player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                        GameManager.instance.player.GetComponent<Character>().SetAnim_Move(null);
+                        GameManager.instance.player.GetComponent<BoxCollider2D>().enabled = false;
+                        GameManager.instance.player.GetComponent<CircleCollider2D>().enabled = false;
+                    }
+                }
+                break;
+            }
             default:
                 break;
         }
-
     }
 }

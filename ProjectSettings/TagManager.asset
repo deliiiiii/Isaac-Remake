@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Item
+  - Block
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -11,10 +14,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - CharacterHead
+  - CharacterBody
+  - ItemOrOthers
+  - Block
   - 
   - 
   - 
@@ -43,4 +46,7 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 190754901
+    locked: 0
+  - name: UI
+    uniqueID: 2039438919
     locked: 0
