@@ -55,8 +55,30 @@ public class Character : MonoBehaviour
         {
             if (!collision.gameObject.GetComponent<Item>().canCollect)
                 return;
-            Debug.Log("colliding Item : " + collision.gameObject.GetComponent<Item>().index);
-            ItemManager.instance.prefab_item[collision.gameObject.GetComponent<Item>().index].count.Value += collision.gameObject.GetComponent<Item>().value;
+            int index_colliding = collision.gameObject.GetComponent<Item>().index;
+            Debug.Log("colliding Item : " + index_colliding);
+            if(collision.gameObject.GetComponent<Item>().index < 3)
+                ItemManager.instance.prefab_item[index_colliding].count.Value += collision.gameObject.GetComponent<Item>().value;
+            else if (index_colliding >= 3 && index_colliding <= 4)
+            {
+                if (curHP.Value == maxHP)
+                    return;
+                if(index_colliding == 3)
+                {
+                    if (curHP.Value + 2 <= maxHP)
+                        curHP.Value += 2;
+                    else
+                        curHP.Value = maxHP;
+                }
+                else if (index_colliding == 4)
+                {
+                    if (curHP.Value + 1 <= maxHP)
+                        curHP.Value += 1;
+                    else
+                        curHP.Value = maxHP;
+                }
+            }
+            
             Destroy(collision.gameObject);
         }
         

@@ -8,7 +8,7 @@ public class Isaac : Character
     {
         type = TYPE.player;
 
-        maxHP = 13;
+        maxHP = 14;
         curHP = new ObservableValue<int>(0, 1);
         tempHP = new ObservableValue<int>(0, 1);
         blackHP = new ObservableValue<int>(0, 1);
