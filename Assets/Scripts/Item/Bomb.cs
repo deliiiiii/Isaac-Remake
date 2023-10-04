@@ -12,7 +12,7 @@ public class Bomb : Item
     private void Awake()
     {
         value = 1;
-        frictionSpeed = new(0.82f, 0.82f);
+        frictionSpeed = new(1.2f, 1.2f);
     }
     private void Update()
     {

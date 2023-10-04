@@ -86,8 +86,8 @@ public class RoomManager : MonoBehaviour
         
         float[,] delta_makeup = new float[2, 5]
         {
-            {0,0,0,-1.2f,1.2f },
-            {0,1.6f,-0.9f,0,0 },
+            {0,0,0,-0.9f,0.9f },
+            {0,1.4f,-0.5f,0.4f,0.4f},
         };
         //Debug.Log("current x = " + currentRoom.Value.pos_x);
         //Debug.Log("current y = " + currentRoom.Value.pos_y);

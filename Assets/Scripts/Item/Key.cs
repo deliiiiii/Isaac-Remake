@@ -8,6 +8,6 @@ public class Key : Item
     private void Awake()
     {
         value = 1;
-        frictionSpeed = new(0.75f, 0.75f);
+        frictionSpeed = new(0.9f, 0.9f);
     }
 }
