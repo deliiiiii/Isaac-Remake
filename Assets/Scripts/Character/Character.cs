@@ -1,12 +1,17 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.XR;
 
 public class Character : MonoBehaviour
 {
-    protected ObservableValue<float> curHP;
-    protected float maxHP;
-    protected ObservableValue<float> tempHP;
-    protected ObservableValue<float> blackHP;
+    public ObservableValue<int> curHP;
+    public int maxHP;
+    public ObservableValue<int> tempHP;
+    public ObservableValue<int> blackHP;
+
+    public float hurtTimer = 0;
+    public float hurtCD = 1f;
+    public bool isHurt = false;
 
     public float c_height;
     public float moveSpeed;
@@ -18,7 +23,6 @@ public class Character : MonoBehaviour
     public float tearSpeedDivisionWhileMoving;
     public float tearRange;
     public float tearSize;
-    
 
     public GameObject character_Shade;
     public Tear tear;
@@ -45,18 +49,18 @@ public class Character : MonoBehaviour
         anim = GetComponent<Animator>();
         currentState = new(STATE.Idling,6);
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Item"))
         {
+            if (!collision.gameObject.GetComponent<Item>().canCollect)
+                return;
             Debug.Log("colliding Item : " + collision.gameObject.GetComponent<Item>().index);
             ItemManager.instance.prefab_item[collision.gameObject.GetComponent<Item>().index].count.Value += collision.gameObject.GetComponent<Item>().value;
             Destroy(collision.gameObject);
         }
         
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Door") && currentState.Value != STATE.ChangingRoom)
@@ -66,6 +70,7 @@ public class Character : MonoBehaviour
             transform.position = RoomManager.instance.MoveRoom(dir);
         }
     }
+
     public virtual void InputMove()
     {
         if(currentState.Value == STATE.Dead || currentState.Value == STATE.ChangingRoom)
@@ -112,8 +117,21 @@ public class Character : MonoBehaviour
             }
         }
     }
+    public void SetAnim_Move(string name)
+    {
+        anim.SetBool("Move_W", false);
+        anim.SetBool("Move_S", false);
+        anim.SetBool("Move_A", false);
+        anim.SetBool("Move_D", false);
+        if (name != null)
+            anim.SetBool(name, true);
+    }
     public virtual void InputShoot()
     {
+        if (currentState.Value == STATE.Dead || currentState.Value == STATE.ChangingRoom)
+        {
+            return;
+        }
         if (tearShootTimer < tearShootCD)
         {
             tearShootTimer += Time.deltaTime;
@@ -148,7 +166,20 @@ public class Character : MonoBehaviour
             //transform.position.y-c_height /tearSize
             return;
         }
-        
+    }
+    public virtual void InputSkills()
+    {
+        if (currentState.Value == STATE.Dead || currentState.Value == STATE.ChangingRoom)
+        {
+            return;
+        }
+        if(Input.GetKeyDown(KeyCode.E)) 
+        {
+            if (ItemManager.instance.prefab_item[1].count.Value <= 0)
+                return;
+            ItemManager.instance.prefab_item[1].count.Value--;
+            RoomManager.instance.currentRoom.Value.GenerateItem(transform, 1,false);
+        }
     }
     private void FrictionSlowDown()
     {
@@ -172,18 +203,39 @@ public class Character : MonoBehaviour
         rb.velocity = new Vector2(t_x, t_y);
     }
 
-    public void SetAnim_Move(string name)
+    public void MDamage(int damage)
     {
-        anim.SetBool("Move_W", false);
-        anim.SetBool("Move_S", false);
-        anim.SetBool("Move_A", false);
-        anim.SetBool("Move_D", false);
-        if (name != null)
-            anim.SetBool(name, true);
+        if (isHurt)
+            return;
+        isHurt = true;
+        curHP.Value -= damage;
+        StartCoroutine(nameof(HurtFlash));
     }
+    IEnumerator HurtFlash()
+    {
+        int count = 0;
+        while(count < 100)
+        {
+            hurtTimer += 0.08f;
+            if (hurtTimer > hurtCD)
+            {
+                hurtTimer = 0;
+                isHurt = false;
+                break;
+            }
+            ReverseSpriteActive();
+            yield return new WaitForSeconds(0.08f);
+            count++;
+        }
+        yield break;
 
-    public void RefreshHPUI()
-    {
-        Debug.Log("RefreshHPUI");
     }
+    private void ReverseSpriteActive()
+    {
+        for(int i = 0;i<transform.childCount-1;i++)//PAT:the last is character's shade
+        {
+            transform.GetChild(i).GetComponent<SpriteRenderer>().enabled = !transform.GetChild(i).GetComponent<SpriteRenderer>().enabled;
+        }
+    }
+    
 }

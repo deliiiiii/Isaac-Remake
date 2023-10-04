@@ -24,12 +24,20 @@ public class ObservableValue<T>
         get => value;
         set
         {
+            T oldValue = this.value;
             if (this.value.Equals(value))
                 return;
-            if (typeof(T) == typeof(int) && (int.Parse(value.ToString()) < 0))
-                return;
+            //if (typeof(T) == typeof(int) && (int.Parse(value.ToString()) < 0))
+            //    return;
+
+            //if (valueType == 7 && (int.Parse(value.ToString()) < 0))
+            //{
+            //    T t = (T)(object)Convert.ToInt32(0);
+            //    this.value = t;
+            //}
+
             this.value = value;
-            OnValueChangeEvent?.Invoke(this.value, value, this.valueType);
+            OnValueChangeEvent?.Invoke(oldValue, value, this.valueType);
         }
     }
     public void OnValueChange(T oldValue, T newValue, int valueType)
@@ -53,17 +61,18 @@ public class ObservableValue<T>
             }
             case 1://更新血量UI
             {
-                GameManager.instance.player.RefreshHPUI();
+                    Debug.Log("HP :" + oldValue + " -> " + newValue);
+                UIManager.instance.RefreshHPUI();
                 break;
             }
             case 2://更新Item UI
             {
-                ItemManager.instance.RefreshItemUI();
+                UIManager.instance.RefreshItemUI();
                 break;
             }
             case 4://更新摄像头位置
             {
-                    Debug.Log(CameraController.instance == null);
+                //Debug.Log(CameraController.instance == null);
                 CameraController.instance.CallRefreshPosition();
                 break;
             }
@@ -89,6 +98,11 @@ public class ObservableValue<T>
                         GameManager.instance.player.GetComponent<CircleCollider2D>().enabled = false;
                     }
                 }
+                break;
+            }
+            case 7://更新Block状态
+            {
+                RoomManager.instance.RefreshBlockState();
                 break;
             }
             default:

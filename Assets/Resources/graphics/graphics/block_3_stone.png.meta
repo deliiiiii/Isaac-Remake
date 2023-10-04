@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b19f0f891a3227d499e80303e8bbd084
+guid: ad02bcba84bfb2243b8e86c48d6fae4e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,259 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: block_0_shit_0
+      name: block_3_stone_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9fb9e08392fc0543adaea9e0bcfde81
+      internalID: -127884102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_3_stone_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 869d1fe5c39fc8f46a726cf0694b50c7
+      internalID: -780032052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_3_stone_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73957b79ce3cafa4dbcc4df4b5774db7
+      internalID: -1228108587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_3_stone_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f478257f36e5e94db52bec48b958bff
+      internalID: -886597437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_3_stone_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca6721dd70f7b4746baa847d431347bb
+      internalID: -1461481983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_3_stone_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4392492b91d50ec4c93ba6fb478c6b5d
+      internalID: 808815669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_3_stone_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b45c61ce5ca34143b8a23ce86dc81b8
+      internalID: -901883976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_3_stone_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e872050972d273a4080b92f24b78085a
+      internalID: 756458765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_3_stone_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c906a77e4fee5fa4fa71c33ac6f94207
+      internalID: -1031245241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_3_stone_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb545486d0775b542abe90cefd5078a2
+      internalID: -882562281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_3_stone_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e904d573f55968f4993b7b198726b7f8
+      internalID: -948120428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_3_stone_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1ee6429396ce2b4cb9184a45a2680a8
+      internalID: -1482143773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_3_stone_12
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d25d76da8b18ea7499329e864294441a
-      internalID: -1301616016
+      spriteID: 92b824773ebdc82409c2948f8ffe67d8
+      internalID: -1232374162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_1
+      name: block_3_stone_13
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec4b347663bc3f742bc61ac393b1469e
-      internalID: 138135923
+      spriteID: 98feebe111950574296e2443b7926757
+      internalID: -549694539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_2
+      name: block_3_stone_14
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +418,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23ae0b3fa09656740b26a69ad716d973
-      internalID: 585394445
+      spriteID: 38e237202eebd79488fbeb549a303b7b
+      internalID: -713896100
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_3
+      name: block_3_stone_15
       rect:
         serializedVersion: 2
         x: 96
@@ -187,35 +439,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1699b4258a468354f965b5097e5e1558
-      internalID: -70623903
+      spriteID: 57ee062c28ef90f46b597e7687d5ed3e
+      internalID: 323485461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 058cc86f5331f1c4aa26bc56aff4236b
-      internalID: -2002311371
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: block_0_shit_5
+      name: block_3_stone_16
       rect:
         serializedVersion: 2
         x: 0
@@ -229,14 +460,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02d80bfd9d821fb4180392727fef100f
-      internalID: -526805469
+      spriteID: 4c67906a04cc3a44196ae3b9b8772630
+      internalID: 628892986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_6
+      name: block_3_stone_17
       rect:
         serializedVersion: 2
         x: 32
@@ -250,14 +481,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfb814ebcf9897c4baf0241cf9fa1197
-      internalID: -2104534179
+      spriteID: c360fdcd8a9c90b4facc37365b6396d4
+      internalID: -78831734
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_7
+      name: block_3_stone_18
       rect:
         serializedVersion: 2
         x: 64
@@ -271,56 +502,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84eed39ad0572a049857c35826ecc2d6
-      internalID: -1342833366
+      spriteID: a253c47b745c48749b781143405e695c
+      internalID: -819437508
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_8
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a7f41cf90c79d5343ac8d8e4e68835d1
-      internalID: -1811515589
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: block_0_shit_9
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a53e45a84adec14d9d161e7a4649805
-      internalID: 273794188
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: block_0_shit_10
+      name: block_3_stone_19
       rect:
         serializedVersion: 2
         x: 0
@@ -334,98 +523,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abb3f09c2e2cbde4390322f3b5bacf5e
-      internalID: 1581686076
+      spriteID: 8eb677626e4bab547977b3070815486a
+      internalID: 1315977421
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_11
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0145129dea3ad544dbc226deb5fc893b
-      internalID: -1613403452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: block_0_shit_12
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 307eff4a5684ec048b9d5c088db1ed9b
-      internalID: 1468413474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: block_0_shit_13
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d69f8d8c3b69304429ab5514bb591146
-      internalID: 1474592987
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: block_0_shit_14
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cc6ddb0e578fd1b4ca963fe22e9a98fc
-      internalID: 47268231
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: block_0_shit_15
+      name: block_3_stone_20
       rect:
         serializedVersion: 2
         x: 0
@@ -439,14 +544,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ede779b44a02fc4b952d122ed48851c
-      internalID: 981083013
+      spriteID: 83d01856ff5a02a4e9650dd82f3156d0
+      internalID: 101484755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_16
+      name: block_3_stone_21
       rect:
         serializedVersion: 2
         x: 32
@@ -460,14 +565,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 028773dd5eb08fe489cb21d0826384a3
-      internalID: -1085430675
+      spriteID: d589b32c378a7df4d9427c82480d2bfa
+      internalID: -1884503593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_17
+      name: block_3_stone_22
       rect:
         serializedVersion: 2
         x: 64
@@ -481,56 +586,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 516bfd6e71fd2424ab240f17aac6f3bd
-      internalID: -1062480562
+      spriteID: 0a20dfcb4968c344a9caead39ab30dc4
+      internalID: 377440783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_18
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 396e9d3122b8dbc478abb770bfdb89b2
-      internalID: -1815641051
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: block_0_shit_19
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2f9e5c10750ca348806474136aaeaf6
-      internalID: 2127129945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: block_0_shit_20
+      name: block_3_stone_23
       rect:
         serializedVersion: 2
         x: 0
@@ -544,14 +607,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a3ad35fa525b1142a1ace4e3263276e
-      internalID: 337787431
+      spriteID: b03d6d1068e0d11478b12ffc2f26a055
+      internalID: -1803387208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_21
+      name: block_3_stone_24
       rect:
         serializedVersion: 2
         x: 32
@@ -565,14 +628,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40c32c765c45149448bbb69df75e4410
-      internalID: 633099546
+      spriteID: 1a2ee2d3954bef24ebe3a3753156c43a
+      internalID: -1271176191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: block_0_shit_22
+      name: block_3_stone_25
       rect:
         serializedVersion: 2
         x: 64
@@ -586,50 +649,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78324399d04325941bc1d6aaa47b6171
-      internalID: -83190551
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: block_0_shit_23
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2594c531dd763ea4095b2ac3ba58ebc7
-      internalID: -2069949708
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: block_0_shit_24
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cbb4d4dc3b07a3f43830e790ea0426f9
-      internalID: 1282220766
+      spriteID: ee98259946e4e5f418e656cae83c6cf5
+      internalID: -248114751
       vertices: []
       indices: 
       edges: []
@@ -645,31 +666,32 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      block_0_shit_0: -1301616016
-      block_0_shit_1: 138135923
-      block_0_shit_10: 1581686076
-      block_0_shit_11: -1613403452
-      block_0_shit_12: 1468413474
-      block_0_shit_13: 1474592987
-      block_0_shit_14: 47268231
-      block_0_shit_15: 981083013
-      block_0_shit_16: -1085430675
-      block_0_shit_17: -1062480562
-      block_0_shit_18: -1815641051
-      block_0_shit_19: 2127129945
-      block_0_shit_2: 585394445
-      block_0_shit_20: 337787431
-      block_0_shit_21: 633099546
-      block_0_shit_22: -83190551
-      block_0_shit_23: -2069949708
-      block_0_shit_24: 1282220766
-      block_0_shit_3: -70623903
-      block_0_shit_4: -2002311371
-      block_0_shit_5: -526805469
-      block_0_shit_6: -2104534179
-      block_0_shit_7: -1342833366
-      block_0_shit_8: -1811515589
-      block_0_shit_9: 273794188
+      block_3_stone_0: -127884102
+      block_3_stone_1: -780032052
+      block_3_stone_10: -948120428
+      block_3_stone_11: -1482143773
+      block_3_stone_12: -1232374162
+      block_3_stone_13: -549694539
+      block_3_stone_14: -713896100
+      block_3_stone_15: 323485461
+      block_3_stone_16: 628892986
+      block_3_stone_17: -78831734
+      block_3_stone_18: -819437508
+      block_3_stone_19: 1315977421
+      block_3_stone_2: -1228108587
+      block_3_stone_20: 101484755
+      block_3_stone_21: -1884503593
+      block_3_stone_22: 377440783
+      block_3_stone_23: -1803387208
+      block_3_stone_24: -1271176191
+      block_3_stone_25: -248114751
+      block_3_stone_3: -886597437
+      block_3_stone_4: -1461481983
+      block_3_stone_5: 808815669
+      block_3_stone_6: -901883976
+      block_3_stone_7: 756458765
+      block_3_stone_8: -1031245241
+      block_3_stone_9: -882562281
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

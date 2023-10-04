@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class RoomManager : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class RoomManager : MonoBehaviour
 
     public List<Room> list_room = new();
     public ObservableValue<Room> currentRoom = new(new(),4);
-    private int width = 5;
-    private int column = 5;
+    private int width = 3;
+    private int column = 3;
 
 
     int[,] dir_or_index_door = new int[3, 5]
@@ -26,7 +27,6 @@ public class RoomManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-       
     }
     public void AddRoomToList()
     {
@@ -36,9 +36,7 @@ public class RoomManager : MonoBehaviour
                 list_room.Add(Instantiate(room_default, new Vector3(i * 35, j * 24, 0), Quaternion.identity, grid.transform).GetComponent<Room>());
                 list_room[^1].pos_x = i + 1;
                 list_room[^1].pos_y = j + 1;
-                //list_room[^1].state_door[1].Value = 1;
-                //list_room[^1].state_door[2].Value = 1;
-                //list_room[^1].state_door[4].Value = 1;
+                list_room[^1].gameObject.SetActive(true);   
             }
         currentRoom.Value = list_room[0];
         CameraController.instance.CallRefreshPosition();
@@ -61,7 +59,28 @@ public class RoomManager : MonoBehaviour
             }
         }
     }
+    public void RefreshBlockState()
+    {
+        for(int i=0;i<currentRoom.Value.blocks.Count;i++)
+        {
+            Block block = currentRoom.Value.blocks[i];
+            int HP = block.HP.Value;
+            //Debug.Log("HP = " + HP);
+            if(HP <= 0)
+            {
+                block.DisableAllCollider();
+                currentRoom.Value.blocks.RemoveAt(i);
+                block.GetComponent<SpriteRenderer>().sprite = block.sprite_HP[0];
 
+                if(block.index == 2)
+                {
+                    block.GetComponent<TNT>().SetAnim_after_Explode();
+                }
+                continue;
+            }
+            block.GetComponent<SpriteRenderer>().sprite = block.sprite_HP[HP];
+        }
+    }
     public Vector3 MoveRoom(int direction)
     {
         
@@ -70,11 +89,11 @@ public class RoomManager : MonoBehaviour
             {0,0,0,-1.2f,1.2f },
             {0,1.6f,-0.9f,0,0 },
         };
-        Debug.Log("current x = " + currentRoom.Value.pos_x);
-        Debug.Log("current y = " + currentRoom.Value.pos_y);
-        Debug.Log("direction = " + direction);
-        Debug.Log("dir x = " + dir_or_index_door[0,direction]);
-        Debug.Log("dir y = " + dir_or_index_door[1,direction]);
+        //Debug.Log("current x = " + currentRoom.Value.pos_x);
+        //Debug.Log("current y = " + currentRoom.Value.pos_y);
+        //Debug.Log("direction = " + direction);
+        //Debug.Log("dir x = " + dir_or_index_door[0,direction]);
+        //Debug.Log("dir y = " + dir_or_index_door[1,direction]);
         Room targetRoom = FindRoom(currentRoom.Value.pos_x + dir_or_index_door[0, direction], currentRoom.Value.pos_y + dir_or_index_door[1, direction]);
         currentRoom.Value = targetRoom;
         Vector3 targetPos = new

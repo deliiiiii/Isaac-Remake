@@ -42,15 +42,41 @@ public class Tear : MonoBehaviour
                 Anim_before_Destroy();
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Block"))
+        {
+            Block block = collision.gameObject.GetComponent<Block>();
+            if(block)
+            {
+                if((bool)block.isTearable)
+                {
+                    block.MDamage(1);
+                }
+            }
+            Anim_before_Destroy();
+        }
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            //if (collision.gameObject.GetComponent<Item>().canCollect)
+            //    return;
+            Anim_before_Destroy();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
     public void GenerateTear(GameObject user,int direction)
     {
         this.user = user.GetComponent<Character>();
-        float[,] dir = new float[2, 5]
+        float[,] dir = new float[3, 5]
         {
             {0,0,0,-0.6f,0.6f},
-            {0,0.6f,-0.6f,0,0}
+            {0,0.6f,-0.6f,0,0},
+            {0,0.6f,-0.6f,-0.2f,-0.2f}//·ÀÖ¹×Óµ¯ÌùÇ½·¢ÉäµÄÎ»ÒÆÐÞ¸´
         };
-        GameObject gene_tear = Instantiate(gameObject, new Vector3(user.transform.position.x + dir[0,direction], user.transform.position.y + dir[1, direction], transform.position.z), Quaternion.identity);
+        GameObject gene_tear = Instantiate(gameObject, new Vector3(user.transform.position.x + dir[0,direction], user.transform.position.y + dir[2, direction], transform.position.z), Quaternion.identity);
         gene_tear.SetActive(true);
         gene_tear.transform.localScale = new Vector3(user.GetComponent<Character>().tearSize, user.GetComponent<Character>().tearSize, 1f);
         gene_tear.GetComponent<Tear>().tear_Shade.transform.localPosition = new Vector3
