@@ -52,10 +52,32 @@ public class RoomManager : MonoBehaviour
                 //Debug.Log("RoomIndex:" + i + " direction : " + direction +" found? :" + hasFoundRoom);
                 if (hasFoundRoom != null)
                 {
-                    list_room[i].doors[direction].SetActive(true);
+                    list_room[i].doors[direction].SetState(Door.STATE.closed_1_Lock, true);
                 }
                 else
-                    list_room[i].doors[direction].SetActive(false);
+                    list_room[i].doors[direction].SetState(Door.STATE.Disabled, true);
+            }
+        }
+    }
+    public void RefreshDoorState(Door.STATE changedState)
+    {
+        for (int i = 0; i < list_room.Count; i++)
+        {
+            for (int direction = 1; direction <= 4; direction++)
+            {
+                if (list_room[i].doors[direction].state == changedState)
+                {
+                    Room nextRoom = FindRoom(list_room[i].pos_x + dir_or_index_door[0, direction], list_room[i].pos_y + dir_or_index_door[1, direction]);
+                    //Debug.Log("nextRoom : " + nextRoom.pos_x + " " + nextRoom.pos_y);
+                    if (nextRoom == null)
+                    {
+                        Debug.LogError("Not found nextRoom!!");
+                        continue;
+                    }
+                    //Debug.Log("New Door Direction : " + dir_or_index_door[2, direction]);
+                    nextRoom.doors[dir_or_index_door[2, direction]].SetState(changedState,true);
+                }
+
             }
         }
     }
@@ -95,6 +117,11 @@ public class RoomManager : MonoBehaviour
         //Debug.Log("dir x = " + dir_or_index_door[0,direction]);
         //Debug.Log("dir y = " + dir_or_index_door[1,direction]);
         Room targetRoom = FindRoom(currentRoom.Value.pos_x + dir_or_index_door[0, direction], currentRoom.Value.pos_y + dir_or_index_door[1, direction]);
+        if(targetRoom == null)
+        {
+            Debug.LogError("There's not nextRoom!");
+            return Vector3.zero;
+        }
         currentRoom.Value = targetRoom;
         Vector3 targetPos = new
             (targetRoom.doors[dir_or_index_door[2, direction]].transform.position.x + delta_makeup[0, direction],

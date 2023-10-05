@@ -87,6 +87,13 @@ public class Character : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Door") && currentState.Value != STATE.ChangingRoom)
         {
+            if(collision.gameObject.GetComponent<Door>().state == Door.STATE.closed_1_Lock)
+            {
+                if (ItemManager.instance.prefab_item[2].count.Value <= 0)
+                    return;
+                ItemManager.instance.prefab_item[2].count.Value--;
+                collision.gameObject.GetComponent<Door>().SetState(Door.STATE.openNormal,false);
+            }
             currentState.Value = STATE.ChangingRoom;
             int dir = collision.transform.GetSiblingIndex();
             transform.position = RoomManager.instance.MoveRoom(dir);
