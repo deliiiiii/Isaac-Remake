@@ -39,7 +39,7 @@ public class Clotty : Character
         skill_usingTimer = new() { 0f };
         skill_range = new() { 0f };
         skill_emit = new() { false };
-        skillFuncs = new() { MoveTowards };
+        skillFuncs = new() { Skill_0 };
 
         skill_loadTimer.Add(0.3f);
         skill_loadCD.Add(2.5f);
@@ -47,29 +47,28 @@ public class Clotty : Character
         skill_usingTimer.Add(0f);
         skill_range.Add(9999f);
         skill_emit.Add(false);
-        skillFuncs.Add(delegate { Attack_4_dir(1); });
+        skillFuncs.Add(delegate { Skill_1(); });
     }
     private void Update()
     {
         base.EmitSkill();
     }
 
-    private void Attack_4_dir(int skillIndex)
+    private void Skill_1()
     {
         skill_emit[1] = true;
         for (int direction = 1;direction <=4;direction++)
         {
             tear.GenerateTear(gameObject, direction);
         }
-        Debug.Log("Clotty Skill : " + skillIndex);
-        EndSkill_2();
+        EndSkill_1();
     }
-    public void EndSkill_2()
+    public void EndSkill_1()
     {
         if (skill_usingTimer[1] <= skill_usingMaxTime[1])
         {
             skill_usingTimer[1] += 0.02f;
-            Invoke(nameof(EndSkill_2), 0.02f);
+            Invoke(nameof(EndSkill_1), 0.02f);
             return;
         }
         skill_emit[1] = false;

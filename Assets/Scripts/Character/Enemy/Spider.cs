@@ -37,7 +37,7 @@ public class Spider : Character
         skill_usingTimer = new() { 0f };
         skill_range = new() { 3.2f };
         skill_emit = new() { false };
-        skillFuncs = new() { MoveTowards };
+        skillFuncs = new() { Skill_0 };
     }
 
     private void Update()
