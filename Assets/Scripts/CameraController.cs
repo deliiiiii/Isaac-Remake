@@ -24,12 +24,12 @@ public class CameraController : MonoBehaviour
         ItemManager.instance.prefab_item[1].count.Value = 66;
         ItemManager.instance.prefab_item[2].count.Value = 2;
 
-        RoomManager.instance.currentRoom.Value.GenerateBlock(0, 5);
+        //RoomManager.instance.currentRoom.Value.GenerateBlock(0, 5);
         RoomManager.instance.currentRoom.Value.GenerateBlock(1, 10);
-        RoomManager.instance.currentRoom.Value.GenerateBlock(2, 8);
-        RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 0,true);
-        RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 1,true);
-        RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 2,true);
+        //RoomManager.instance.currentRoom.Value.GenerateBlock(2, 8);
+        //RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 0,true);
+        //RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 1,true);
+        //RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 2,true);
     }
     public void CallRefreshPosition()
     {

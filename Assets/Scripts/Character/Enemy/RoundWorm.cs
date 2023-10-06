@@ -19,6 +19,7 @@ public class RoundHead : Character
 
 
         c_height = 0.6f; 
+        character_Shade.transform.localPosition = new Vector3(0, -c_height, 0);
         moveSpeed = 0f;
         frictionSpeed = new Vector2(9999f, 9999f);
         tearDamage = 1;

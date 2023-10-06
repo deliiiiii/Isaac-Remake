@@ -22,8 +22,8 @@ public class Clotty : Character
         curHP.Value = maxHP;
 
 
-        c_height = 0.5f;
-        //character_Shade.transform.localPosition = new Vector3(0, -c_height, 0);
+        c_height = 0.8f;
+        character_Shade.transform.localPosition = new Vector3(0, -c_height, 0);
         moveSpeed = 2f;
         frictionSpeed = new Vector2(0.4f, 0.4f);
         tearDamage = 1;

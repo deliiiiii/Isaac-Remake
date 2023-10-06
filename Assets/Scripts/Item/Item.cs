@@ -48,4 +48,14 @@ public class Item : MonoBehaviour
         }
         rb.velocity = new Vector2(t_x, t_y);
     }
+
+    public void DelayCollect()
+    {
+        canCollect = false;
+        Invoke(nameof(EnableCollect), 1f);
+    }
+    private void EnableCollect()
+    {
+        canCollect = true;
+    }
 }

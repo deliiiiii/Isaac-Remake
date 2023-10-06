@@ -72,13 +72,17 @@ public class Character : MonoBehaviour
         anim = GetComponent<Animator>();
         currentState = new(STATE.Idling,6);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Enemy TO Player");
             collision.gameObject.GetComponent<Character>().MDamage(1);
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
         if (type != TYPE.player)
             return;
         if(collision.gameObject.CompareTag("Item"))
@@ -111,12 +115,19 @@ public class Character : MonoBehaviour
             RoomManager.instance.currentRoom.Value.RemoveItem(collision.gameObject.GetComponent<Item>());
             Destroy(collision.gameObject);
         }
-        
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (type != TYPE.player)
-            return;
+        if(collision.gameObject.CompareTag("Block"))
+        {
+            if(!collision.gameObject.GetComponent<TreasureChest>())
+                return;
+            if (ItemManager.instance.prefab_item[2].count.Value <= 0)
+                return;
+            if (!collision.gameObject.GetComponent<TreasureChest>().isLocked)
+                ItemManager.instance.prefab_item[2].count.Value--;
+            Debug.Log("Player TO TreasureChest");
+            collision.gameObject.GetComponent<TreasureChest>().OpenChest();
+        }
+
+
         if (collision.gameObject.CompareTag("Door") && currentState.Value != STATE.ChangingRoom)
         {
             if(collision.gameObject.GetComponent<Door>().base_state == Door.STATE.closed_1_Lock)

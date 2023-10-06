@@ -48,17 +48,17 @@ public class Room : MonoBehaviour
             
         }
     }
-    public void GenerateItem(Transform transform,int item_index,bool CanCollect)
+    public Item GenerateItem(Transform transform,int item_index,bool CanCollect)
     {
-        if(CanCollect)
+        if(item_index != 5)
         {
             items.Add(Instantiate(ItemManager.instance.prefab_item[item_index].gameObject,
                       transform.position,
                       Quaternion.identity,
                       transform).GetComponent<Item>()); 
             items[^1].gameObject.SetActive(true);
+            return items[^1];
         } 
-        else
         {
             GameObject item = Instantiate(ItemManager.instance.prefab_item[item_index].gameObject,
                                           transform.position,
@@ -71,7 +71,7 @@ public class Room : MonoBehaviour
             item.GetComponent<Bomb>().SetAnim_before_Explode();
             item.GetComponent<Item>().canCollect = false;
         }
-            
+        return null;
     }
     public void RemoveItem(Item item)
     {

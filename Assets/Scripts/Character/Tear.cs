@@ -79,7 +79,10 @@ public class Tear : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("Item"))//PAT as well as Emit(Fatty's skill)
+        {
+            Anim_before_Destroy();
+        }
     }
     public void GenerateTear(GameObject user,int direction)
     {

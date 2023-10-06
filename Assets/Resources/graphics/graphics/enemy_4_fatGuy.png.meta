@@ -108,7 +108,637 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b656895203a5d5b4a87a30aaf8076a9f
+      internalID: -479857526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88da4b9639ee4a040b92e3f9d1b60a7f
+      internalID: 465997406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d175c4739a3bc44fb18024e2677bfa2
+      internalID: 206847164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 200322a027a17d24291b58ced9728b7a
+      internalID: -13579633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcc1f0bf152e0a04e9c00c13734cce6a
+      internalID: 67782799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7100def06cd17494fada98d582ad1068
+      internalID: 1558847814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc2d3922ebc6ef347aa6ade3eaebc893
+      internalID: 498012785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d690eff02efca149aa61237540f7d4f
+      internalID: -69286894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b56cb78233eb3bf42b77350b93684f0d
+      internalID: -436602794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6ea42cbf5348c4448591fa72b82341b
+      internalID: -300367595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ee358edbf81bc049908f72575b3ef93
+      internalID: 72586662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_11
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34a34f54900bf744cab137b8202eade9
+      internalID: 560196938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 059087f04d35e844d9b56979153e012f
+      internalID: 726450921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_13
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b40e3c36df7a54ebc10a8f7df1edca
+      internalID: 471173816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e80b486a9a52ba74fb3907a798c1a743
+      internalID: -1370104921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_15
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d53181eb68c4549859ef0df4ebca49
+      internalID: 709163213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d606ab6d750716498a6488ce9ba7412
+      internalID: -357786518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_17
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad52c3de6d50d044eb29f78775bf612d
+      internalID: 579356202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e872faaea8965b1499bb127a282ca8e4
+      internalID: 870639869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0458a6dbd8f350a47954e623d43866c3
+      internalID: 265025286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_20
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1275a64092ff00f458a7a5b15fa9f736
+      internalID: 254808898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_21
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f9545e10d5b9bb44a396a00fe7ad9ef
+      internalID: 572939655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82853b6bbc0017a4481f2248b31b9305
+      internalID: 1124774608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_23
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9692313b874532643bb150e160d10ff7
+      internalID: -436956333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45aa245efcbd86942b72ccdef1b80bfa
+      internalID: 207545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_25
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 549c80cc25d015f41aa0c99ab63057be
+      internalID: 1303359900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8308ddbb197b07c499e4e7d44d547c2c
+      internalID: -2037318475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_27
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2349d08c8c0e5248aeea2b5155ff3f2
+      internalID: 1079804591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_28
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88e4678715b7c3940af40c76001ed632
+      internalID: -1042750217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_4_fatGuy_29
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5b051932db2f1244bac65a2dafb5d56
+      internalID: -1225686285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +749,113 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      enemy_4_fatGuy_0: -479857526
+      enemy_4_fatGuy_1: 465997406
+      enemy_4_fatGuy_10: 72586662
+      enemy_4_fatGuy_100: 814100246
+      enemy_4_fatGuy_101: 1662913978
+      enemy_4_fatGuy_102: 1872930220
+      enemy_4_fatGuy_103: 1365600663
+      enemy_4_fatGuy_104: 1735265457
+      enemy_4_fatGuy_105: 1898640536
+      enemy_4_fatGuy_11: 560196938
+      enemy_4_fatGuy_12: 726450921
+      enemy_4_fatGuy_13: 471173816
+      enemy_4_fatGuy_14: -1370104921
+      enemy_4_fatGuy_15: 709163213
+      enemy_4_fatGuy_16: -357786518
+      enemy_4_fatGuy_17: 579356202
+      enemy_4_fatGuy_18: 870639869
+      enemy_4_fatGuy_19: 265025286
+      enemy_4_fatGuy_2: 206847164
+      enemy_4_fatGuy_20: 254808898
+      enemy_4_fatGuy_21: 572939655
+      enemy_4_fatGuy_22: 1124774608
+      enemy_4_fatGuy_23: -436956333
+      enemy_4_fatGuy_24: 207545
+      enemy_4_fatGuy_25: 1303359900
+      enemy_4_fatGuy_26: -2037318475
+      enemy_4_fatGuy_27: 1079804591
+      enemy_4_fatGuy_28: -1042750217
+      enemy_4_fatGuy_29: -1225686285
+      enemy_4_fatGuy_3: -13579633
+      enemy_4_fatGuy_30: -1515780414
+      enemy_4_fatGuy_31: -347564025
+      enemy_4_fatGuy_32: -1646260442
+      enemy_4_fatGuy_33: -1157476113
+      enemy_4_fatGuy_34: 174932509
+      enemy_4_fatGuy_35: -1944850102
+      enemy_4_fatGuy_36: -198789158
+      enemy_4_fatGuy_37: -1150758968
+      enemy_4_fatGuy_38: 708821471
+      enemy_4_fatGuy_39: 757939000
+      enemy_4_fatGuy_4: 67782799
+      enemy_4_fatGuy_40: -370115640
+      enemy_4_fatGuy_41: 1956598692
+      enemy_4_fatGuy_42: -641268427
+      enemy_4_fatGuy_43: -1375275486
+      enemy_4_fatGuy_44: 145059291
+      enemy_4_fatGuy_45: 2044438824
+      enemy_4_fatGuy_46: -1956312291
+      enemy_4_fatGuy_47: -1936893801
+      enemy_4_fatGuy_48: 49750918
+      enemy_4_fatGuy_49: 1466355061
+      enemy_4_fatGuy_5: 1558847814
+      enemy_4_fatGuy_50: -1084293455
+      enemy_4_fatGuy_51: 254200492
+      enemy_4_fatGuy_52: -2084127474
+      enemy_4_fatGuy_53: 301970903
+      enemy_4_fatGuy_54: 912839648
+      enemy_4_fatGuy_55: 2027341296
+      enemy_4_fatGuy_56: 534698760
+      enemy_4_fatGuy_57: 933971338
+      enemy_4_fatGuy_58: 66696577
+      enemy_4_fatGuy_59: -930756850
+      enemy_4_fatGuy_6: 498012785
+      enemy_4_fatGuy_60: 1150582998
+      enemy_4_fatGuy_61: 1978244962
+      enemy_4_fatGuy_62: -126551285
+      enemy_4_fatGuy_63: -1839203608
+      enemy_4_fatGuy_64: 1428240233
+      enemy_4_fatGuy_65: -1752756457
+      enemy_4_fatGuy_66: 2096321550
+      enemy_4_fatGuy_67: -754296605
+      enemy_4_fatGuy_68: 709865572
+      enemy_4_fatGuy_69: 1847392976
+      enemy_4_fatGuy_7: -69286894
+      enemy_4_fatGuy_70: 110831966
+      enemy_4_fatGuy_71: 583086648
+      enemy_4_fatGuy_72: 2108193048
+      enemy_4_fatGuy_73: 1535056817
+      enemy_4_fatGuy_74: -582054855
+      enemy_4_fatGuy_75: -108739312
+      enemy_4_fatGuy_76: 901508844
+      enemy_4_fatGuy_77: -1812335104
+      enemy_4_fatGuy_78: 876583064
+      enemy_4_fatGuy_79: 1127574057
+      enemy_4_fatGuy_8: -436602794
+      enemy_4_fatGuy_80: -900253972
+      enemy_4_fatGuy_81: 952153857
+      enemy_4_fatGuy_82: 1273878934
+      enemy_4_fatGuy_83: -1824792590
+      enemy_4_fatGuy_84: -92417400
+      enemy_4_fatGuy_85: -1813359551
+      enemy_4_fatGuy_86: 407079283
+      enemy_4_fatGuy_87: -155886825
+      enemy_4_fatGuy_88: -2107500197
+      enemy_4_fatGuy_89: -1051654333
+      enemy_4_fatGuy_9: -300367595
+      enemy_4_fatGuy_90: -933251950
+      enemy_4_fatGuy_91: -1623364655
+      enemy_4_fatGuy_92: -1726521740
+      enemy_4_fatGuy_93: 1614917114
+      enemy_4_fatGuy_94: -117688339
+      enemy_4_fatGuy_95: 994579557
+      enemy_4_fatGuy_96: -1675482782
+      enemy_4_fatGuy_97: -62175399
+      enemy_4_fatGuy_98: -2100922503
+      enemy_4_fatGuy_99: -216481615
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
