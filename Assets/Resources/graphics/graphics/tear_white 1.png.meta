@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bd2ac65c25cce0b4dbe4a09523003907
+guid: 578ab978f43577c41a493dab76bd5eca
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,316 +110,316 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RedTear_0
+      name: tear_white_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
+        y: 197
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ab6754c5c23dce4a814ff338d431a79
-      internalID: 1265920253
+      spriteID: 7effdadf15e85724b9b7ec18e8d0f6c1
+      internalID: 289401771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_1
+      name: tear_white_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 192
+        y: 197
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cae9c1f7d14e19b429f0c5f38bfad8b9
-      internalID: -1195891701
+      spriteID: ea29091f28b113148956eaf8f154a047
+      internalID: -1189154509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_2
+      name: tear_white_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 192
+        y: 197
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb6bf2af851dae84084e9b774a2acd47
-      internalID: -621309305
+      spriteID: ea39c2e04021f3343b055abeb9afbe33
+      internalID: 671139678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_3
+      name: tear_white_3
       rect:
         serializedVersion: 2
         x: 192
-        y: 192
+        y: 197
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e466de132083d8d4bad140a40b3d6a25
-      internalID: 1044801971
+      spriteID: c53eee31066e6004ab371fa90ebf83fe
+      internalID: 134102862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_4
+      name: tear_white_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 133
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9613b17fc103c0d4d95998db05d01373
-      internalID: -67072936
+      spriteID: 1b08bc43ba3d74046a65d8f6145e630d
+      internalID: -1105636007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_5
+      name: tear_white_5
       rect:
         serializedVersion: 2
         x: 64
-        y: 128
+        y: 133
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5c20f003b633ff4dbc350d17e0fd6c1
-      internalID: 860339412
+      spriteID: 1e6d36de15908484f9b77fc8770d1b9d
+      internalID: -1652409856
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_6
+      name: tear_white_6
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
+        y: 133
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45b70dd28acd17d4abe488bd0d0d9bd6
-      internalID: -1177082786
+      spriteID: d0bde461f491f5f46b3dd4a8cf5fc984
+      internalID: -1840310460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_7
+      name: tear_white_7
       rect:
         serializedVersion: 2
         x: 192
-        y: 128
+        y: 133
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e94b192daba039449475e03c4bacc98
-      internalID: -1628048398
+      spriteID: 29be9f085df234c45bceae0dbd54a0d2
+      internalID: -1850897387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_8
+      name: tear_white_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 69
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 013e17e56ca77e94caa1d80353d73e77
-      internalID: -556014529
+      spriteID: 6d03a59aa9841574182badcb7638a02e
+      internalID: 1928414870
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_9
+      name: tear_white_9
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 69
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec60ecf4bef660347af73d3f61100ff1
-      internalID: 1291010896
+      spriteID: 3be7ece77f9cc9747927d2da08cb6010
+      internalID: 1809254411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_10
+      name: tear_white_10
       rect:
         serializedVersion: 2
         x: 128
-        y: 64
+        y: 69
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09343e3441381a14aacad4256d465d57
-      internalID: -1423637872
+      spriteID: c2b8c8917b35d3d40b2e4485999f6dac
+      internalID: 1432939306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_11
+      name: tear_white_11
       rect:
         serializedVersion: 2
         x: 192
-        y: 64
+        y: 69
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4db2eedfdaede6d4abc76c1b09812304
-      internalID: 1156572083
+      spriteID: db1405c797ab0d343b42bf3fc06edb33
+      internalID: 1618632379
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_12
+      name: tear_white_12
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 5
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2d8da282b0aae949adf46e0131f768a
-      internalID: 458532399
+      spriteID: 75b887f3265b92b46bb443e1ca29f362
+      internalID: -1184762933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_13
+      name: tear_white_13
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 5
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 987164481dc641d4b8a8a228f153a22b
-      internalID: 1490090444
+      spriteID: 1e031f342388eb44eb54549883b04fe2
+      internalID: -525821391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RedTear_14
+      name: tear_white_14
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
+        y: 5
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.432, y: 0.369}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc9ed1f64ca7b7742849061328ef143d
-      internalID: 1887514992
+      spriteID: e884b048a93f17042a0a2416ffffe82f
+      internalID: -157966215
       vertices: []
       indices: 
       edges: []
@@ -435,21 +435,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RedTear_0: 1265920253
-      RedTear_1: -1195891701
-      RedTear_10: -1423637872
-      RedTear_11: 1156572083
-      RedTear_12: 458532399
-      RedTear_13: 1490090444
-      RedTear_14: 1887514992
-      RedTear_2: -621309305
-      RedTear_3: 1044801971
-      RedTear_4: -67072936
-      RedTear_5: 860339412
-      RedTear_6: -1177082786
-      RedTear_7: -1628048398
-      RedTear_8: -556014529
-      RedTear_9: 1291010896
+      tear_white_0: 289401771
+      tear_white_1: -1189154509
+      tear_white_10: 1432939306
+      tear_white_11: 1618632379
+      tear_white_12: -1184762933
+      tear_white_13: -525821391
+      tear_white_14: -157966215
+      tear_white_2: 671139678
+      tear_white_3: 134102862
+      tear_white_4: -1105636007
+      tear_white_5: -1652409856
+      tear_white_6: -1840310460
+      tear_white_7: -1850897387
+      tear_white_8: 1928414870
+      tear_white_9: 1809254411
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

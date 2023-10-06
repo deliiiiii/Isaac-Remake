@@ -5,6 +5,8 @@ using UnityEngine.XR;
 
 public class Character : MonoBehaviour
 {
+    private int curEnemy = 0;
+
     public int index;
     public ObservableValue<int> curHP;
     public int maxHP;
@@ -26,13 +28,30 @@ public class Character : MonoBehaviour
     public float tearRange;
     public float tearSize;
 
-    
+    /// <summary>
+    /// Enemy Skill
+    /// </summary>
+    [Tooltip("技能CD")]
+    public List<float> skill_loadCD;
+    [Tooltip("技能充能条")]
+    public List<float> skill_loadTimer;
+    [Tooltip("技能阻回上限")]
+    public List<float> skill_usingMaxTime;
+    [Tooltip("技能阻回条")]
+    public List<float> skill_usingTimer;
+    [Tooltip("技能攻击范围")]
+    public List<float> skill_range;
+    [Tooltip("是否正在释放技能")]
+    public List<bool> skill_emit;
+    protected delegate void SkillFuncs(int skillIndex);
+    protected List<SkillFuncs> skillFuncs;
+    protected Vector3 target;
 
     public GameObject character_Shade;
     public Tear tear;
 
-    private Rigidbody2D rb;
-    private Animator anim;
+    protected Rigidbody2D rb;
+    protected Animator anim;
     public enum STATE
     {
         Idling,
@@ -40,14 +59,14 @@ public class Character : MonoBehaviour
         ChangingRoom,
         Dead
     }
-    protected enum TYPE
+    public enum TYPE
     {
         player,
         enemy
     }
     public ObservableValue<STATE> currentState;
-    protected TYPE type;
-    private void Awake()
+    public TYPE type;
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -234,16 +253,37 @@ public class Character : MonoBehaviour
             }
                 
         }
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            curEnemy++;
+            if (curEnemy == EnemyManager.instance.prefab_enemy.Count)
+                curEnemy = 0;
+        }
         if (Input.GetKeyDown(KeyCode.Q))
         {
             int count = 1;
             while(count > 0)
             {
-                RoomManager.instance.currentRoom.Value.GenerateEnemy(RoomManager.instance.currentRoom.Value.gameObject.transform, 0);
+                RoomManager.instance.currentRoom.Value.GenerateEnemy(RoomManager.instance.currentRoom.Value.gameObject.transform, curEnemy);
                 count--;
             }
         }
     }
+
+    public virtual void EmitSkill() 
+    {
+        if (!gameObject.CompareTag("Enemy"))
+            return;
+        for (int i = 0; i < skill_loadTimer.Count; i++)
+        {
+            skill_loadTimer[i] += Time.deltaTime;
+            if (skill_loadTimer[i] >= skill_loadCD[i] && !skill_emit[i])
+            {
+                skillFuncs[i](i);
+            }
+        }
+    }
+    
     private void FrictionSlowDown()
     {
         float t_x = rb.velocity.x, t_y = rb.velocity.y;
@@ -316,5 +356,53 @@ public class Character : MonoBehaviour
             transform.GetChild(i).GetComponent<SpriteRenderer>().enabled = !transform.GetChild(i).GetComponent<SpriteRenderer>().enabled;
         }
     }
-    
+
+    public void MoveTowards(int skillIndex)
+    {
+        anim.SetBool("Move", true);
+        anim.SetBool("Idle", false);
+        Character player = GameManager.instance.player;
+        if (CheckNear(player.transform.position, transform.position, skill_range[skillIndex]))
+        {
+            skill_emit[skillIndex] = true;
+            //Debug.Log("Next to player : MOVE!!");
+            Vector3 delta_vec = (player.transform.position - transform.position).normalized;
+            transform.GetComponent<Rigidbody2D>().velocity = delta_vec * moveSpeed;
+            target = player.transform.position;
+            EndSkill_1();
+            //StartCoroutine(nameof(EndSkill_1),player.transform);
+        }
+        else
+        {
+            skill_emit[skillIndex] = true;
+            //Debug.Log("# Random MOVE!!");
+            Vector3 delta_vec = new(Random.Range(-1.2f, 1.2f), UnityEngine.Random.Range(-1.2f, 1.2f), 0f);
+            transform.GetComponent<Rigidbody2D>().velocity = delta_vec * moveSpeed;
+            target = new(1e9f, 1e9f, 0f);
+            //StartCoroutine(nameof(EndSkill_1), remoteDirection);
+            EndSkill_1();
+        }
+    }
+    public void EndSkill_1()
+    {
+        //anim.SetBool("Idle", true);
+        //anim.SetBool("Move", false);
+        if (!CheckNear(transform.position, target, 0.1f) && skill_usingTimer[0] <= skill_usingMaxTime[0])
+        {
+            skill_usingTimer[0] += 0.02f;
+            Invoke(nameof(EndSkill_1), 0.02f);
+            return;
+        }
+        skill_emit[0] = false;
+        skill_usingTimer[0] = 0;
+        skill_loadTimer[0] = 0;
+        //Invoke(nameof(StopMove), slidingTime);
+    }
+    public bool CheckNear(Vector3 pos1, Vector3 pos2, float f_distance)
+    {
+        float distance = Vector3.Distance(pos1, pos2);
+        if (distance > f_distance)
+            return false;
+        return true;
+    }
 }

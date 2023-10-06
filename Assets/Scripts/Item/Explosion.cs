@@ -6,7 +6,7 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     public float explodeForce = 0.4f;
-    public int damageToEnemy = 1;
+    private int damageToEnemy = 35;
     private void OnTriggerEnter2D(Collider2D collision)
     {
 

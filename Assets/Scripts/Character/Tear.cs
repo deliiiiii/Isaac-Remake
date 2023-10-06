@@ -61,16 +61,19 @@ public class Tear : MonoBehaviour
             Anim_before_Destroy();
         }
 
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (user.type == Character.TYPE.player && collision.gameObject.CompareTag("Enemy"))
         {
-            //TODO Enemy MDamage
             collision.gameObject.GetComponent<Character>().MDamage(user.tearDamage);
             //if (collision.gameObject.GetComponent<Character>().curHP.Value <= 0)
             //{
             //    RoomManager.instance.currentRoom.Value.RemoveEnemy(collision.gameObject.GetComponent<Character>());
             //    Destroy(collision.gameObject);
             //}
-                
+            Anim_before_Destroy();
+        }
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Character>().MDamage(1); 
             Anim_before_Destroy();
         }
     }
