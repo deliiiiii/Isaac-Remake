@@ -17,7 +17,7 @@ public class Clotty : Character
         type = TYPE.enemy;
         index = 1;
 
-        maxHP = 17;
+        maxHP = 20;
         curHP = new ObservableValue<int>(0, -1);
         curHP.Value = maxHP;
 

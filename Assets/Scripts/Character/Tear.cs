@@ -106,7 +106,21 @@ public class Tear : MonoBehaviour
             user.GetComponent<Rigidbody2D>().velocity.y/ user.GetComponent<Character>().tearSpeedDivisionWhileMoving + dir[1, direction] * user.GetComponent<Character>().tearSpeed
             );
     }
-
+    public void GenerateTear(GameObject user, Vector3 direction)
+    {
+        this.user = user.GetComponent<Character>();
+        GameObject gene_tear = Instantiate(gameObject, direction.normalized/2+user.transform.position, Quaternion.identity);
+        gene_tear.SetActive(true);
+        gene_tear.transform.localScale = new Vector3(user.GetComponent<Character>().tearSize, user.GetComponent<Character>().tearSize, 1f);
+        gene_tear.GetComponent<Tear>().tear_Shade.transform.localPosition = new Vector3
+            (
+            0f,
+            -user.GetComponent<Character>().c_height / user.GetComponent<Character>().tearSize,
+            0f
+            );
+        gene_tear.GetComponent<Tear>().tear_Shade.transform.localScale = new Vector3(0.5f, 0.2f, 1f);
+        gene_tear.GetComponent<Rigidbody2D>().velocity =(Vector2) direction.normalized * user.GetComponent<Character>().tearSpeed;
+    }
     void Anim_before_Destroy()
     {
         isDestroyed = true;
