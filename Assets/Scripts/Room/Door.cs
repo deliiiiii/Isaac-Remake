@@ -96,6 +96,10 @@ public class Door : MonoBehaviour
     {
         Debug.Log("TempState = " + newTempState);
         temp_state = newTempState;
+        if(base_state == STATE.Disabled)
+        {
+            return;
+        }
         switch(newTempState)
         {
             case STATE.openAfterBattling:
