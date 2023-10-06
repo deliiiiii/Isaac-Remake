@@ -35,8 +35,8 @@ public class RoundHead : Character
         skill_emit = new() { false };
         skillFuncs = new() { Skill_0 };
 
-        skill_loadTimer.Add(3f);
-        skill_loadCD.Add(4f);
+        skill_loadTimer.Add(1.5f);
+        skill_loadCD.Add(2.4f);
         skill_usingMaxTime.Add(1.2f);
         skill_usingTimer.Add(0f);
         skill_range.Add(4f);
@@ -56,6 +56,22 @@ public class RoundHead : Character
 
     private void UsingSkill_1()
     {
+        int max_trial = 66;
+        int appear_pos_x ,appear_pos_y;
+        while (max_trial >= 0)
+        {
+            max_trial--;
+            appear_pos_x = UnityEngine.Random.Range(-6, 7);
+            appear_pos_y = UnityEngine.Random.Range(-3, 4);
+            if (RoomManager.instance.currentRoom.Value.CheckExistBlock(appear_pos_x, appear_pos_y))
+            {
+                continue;
+            }
+            transform.position = new Vector3(RoomManager.instance.currentRoom.Value.pos_world.x + appear_pos_x,
+                                             RoomManager.instance.currentRoom.Value.pos_world.y + appear_pos_y,
+                                             0f);
+            break;
+        }
         anim.SetTrigger("Appear");
     }
     public void SetAnim_Skill_1_Procedure_1()

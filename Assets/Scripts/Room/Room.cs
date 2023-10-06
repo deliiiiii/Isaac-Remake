@@ -91,7 +91,7 @@ public class Room : MonoBehaviour
         enemies.Remove(character);
         RefreshCurrentDoor_byEnemy();
     }
-    private bool CheckExistBlock(int pos_x, int pos_y)
+    public bool CheckExistBlock(int pos_x, int pos_y)
     {
         for(int i=0;i<blocks.Count;i++)
         {
