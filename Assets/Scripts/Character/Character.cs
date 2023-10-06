@@ -1,9 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
 public class Character : MonoBehaviour
 {
+    public int index;
     public ObservableValue<int> curHP;
     public int maxHP;
     public ObservableValue<int> tempHP;
@@ -16,13 +18,15 @@ public class Character : MonoBehaviour
     public float c_height;
     public float moveSpeed;
     public Vector2 frictionSpeed;
-    public float tearDamage;
+    public int tearDamage;
     public float tearShootCD;
     public float tearShootTimer;
     public float tearSpeed;
     public float tearSpeedDivisionWhileMoving;
     public float tearRange;
     public float tearSize;
+
+    
 
     public GameObject character_Shade;
     public Tear tear;
@@ -36,13 +40,13 @@ public class Character : MonoBehaviour
         ChangingRoom,
         Dead
     }
-    public enum TYPE
+    protected enum TYPE
     {
         player,
         enemy
     }
     public ObservableValue<STATE> currentState;
-    public TYPE type;
+    protected TYPE type;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -51,6 +55,13 @@ public class Character : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Enemy TO Player");
+            collision.gameObject.GetComponent<Character>().MDamage(1);
+        }
+        if (type != TYPE.player)
+            return;
         if(collision.gameObject.CompareTag("Item"))
         {
             if (!collision.gameObject.GetComponent<Item>().canCollect)
@@ -78,21 +89,23 @@ public class Character : MonoBehaviour
                         curHP.Value = maxHP;
                 }
             }
-            
+            RoomManager.instance.currentRoom.Value.RemoveItem(collision.gameObject.GetComponent<Item>());
             Destroy(collision.gameObject);
         }
         
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (type != TYPE.player)
+            return;
         if (collision.gameObject.CompareTag("Door") && currentState.Value != STATE.ChangingRoom)
         {
-            if(collision.gameObject.GetComponent<Door>().state == Door.STATE.closed_1_Lock)
+            if(collision.gameObject.GetComponent<Door>().base_state == Door.STATE.closed_1_Lock)
             {
                 if (ItemManager.instance.prefab_item[2].count.Value <= 0)
                     return;
                 ItemManager.instance.prefab_item[2].count.Value--;
-                collision.gameObject.GetComponent<Door>().SetState(Door.STATE.openNormal,false);
+                collision.gameObject.GetComponent<Door>().SetBaseState(Door.STATE.openNormal,false);
             }
             currentState.Value = STATE.ChangingRoom;
             int dir = collision.transform.GetSiblingIndex();
@@ -106,6 +119,8 @@ public class Character : MonoBehaviour
         {
             return;
         }
+        if (!type.Equals(TYPE.player))
+            return;
         if(Input.GetKey(KeyCode.W))
         {
             rb.velocity = new Vector2(rb.velocity.x, moveSpeed);
@@ -161,6 +176,8 @@ public class Character : MonoBehaviour
         {
             return;
         }
+        if (!type.Equals(TYPE.player))
+            return;
         if (tearShootTimer < tearShootCD)
         {
             tearShootTimer += Time.deltaTime;
@@ -202,12 +219,29 @@ public class Character : MonoBehaviour
         {
             return;
         }
+        if (!type.Equals(TYPE.player))
+            return;
         if(Input.GetKeyDown(KeyCode.E)) 
         {
-            if (ItemManager.instance.prefab_item[1].count.Value <= 0)
-                return;
-            ItemManager.instance.prefab_item[1].count.Value--;
-            RoomManager.instance.currentRoom.Value.GenerateItem(transform, 1,false);
+            int count = 1;
+            while (count > 0)
+            {
+                if (ItemManager.instance.prefab_item[1].count.Value <= 0)
+                    return;
+                ItemManager.instance.prefab_item[1].count.Value--;
+                RoomManager.instance.currentRoom.Value.GenerateItem(transform, 5, false);
+                count--;
+            }
+                
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            int count = 1;
+            while(count > 0)
+            {
+                RoomManager.instance.currentRoom.Value.GenerateEnemy(RoomManager.instance.currentRoom.Value.gameObject.transform, 0);
+                count--;
+            }
         }
     }
     private void FrictionSlowDown()
@@ -236,8 +270,20 @@ public class Character : MonoBehaviour
     {
         if (isHurt)
             return;
-        isHurt = true;
+        
         curHP.Value -= damage;
+        if (gameObject.CompareTag("Enemy"))
+        {
+            if (curHP.Value <= 0)
+            {
+                RoomManager.instance.currentRoom.Value.RemoveEnemy(GetComponent<Character>());
+                Destroy(gameObject);
+            }
+        }
+        //Debug.Log("new HP = " + curHP.Value);
+        if (!gameObject.CompareTag("Player"))
+            return;
+        isHurt = true;
         StartCoroutine(nameof(HurtFlash));
     }
     IEnumerator HurtFlash()
@@ -255,6 +301,10 @@ public class Character : MonoBehaviour
             ReverseSpriteActive();
             yield return new WaitForSeconds(0.08f);
             count++;
+        }
+        for (int i = 0; i < transform.childCount - 1; i++)//PAT:the last is character's shade
+        {
+            transform.GetChild(i).GetComponent<SpriteRenderer>().enabled = true;
         }
         yield break;
 

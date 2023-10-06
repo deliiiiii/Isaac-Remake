@@ -52,10 +52,10 @@ public class RoomManager : MonoBehaviour
                 //Debug.Log("RoomIndex:" + i + " direction : " + direction +" found? :" + hasFoundRoom);
                 if (hasFoundRoom != null)
                 {
-                    list_room[i].doors[direction].SetState(Door.STATE.closed_1_Lock, true);
+                    list_room[i].doors[direction].SetBaseState(Door.STATE.closed_1_Lock, true);
                 }
                 else
-                    list_room[i].doors[direction].SetState(Door.STATE.Disabled, true);
+                    list_room[i].doors[direction].SetBaseState(Door.STATE.Disabled, true);
             }
         }
     }
@@ -65,7 +65,7 @@ public class RoomManager : MonoBehaviour
         {
             for (int direction = 1; direction <= 4; direction++)
             {
-                if (list_room[i].doors[direction].state == changedState)
+                if (list_room[i].doors[direction].base_state == changedState)
                 {
                     Room nextRoom = FindRoom(list_room[i].pos_x + dir_or_index_door[0, direction], list_room[i].pos_y + dir_or_index_door[1, direction]);
                     //Debug.Log("nextRoom : " + nextRoom.pos_x + " " + nextRoom.pos_y);
@@ -75,7 +75,7 @@ public class RoomManager : MonoBehaviour
                         continue;
                     }
                     //Debug.Log("New Door Direction : " + dir_or_index_door[2, direction]);
-                    nextRoom.doors[dir_or_index_door[2, direction]].SetState(changedState,true);
+                    nextRoom.doors[dir_or_index_door[2, direction]].SetBaseState(changedState,true);
                 }
 
             }

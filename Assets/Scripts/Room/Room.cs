@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static Unity.Collections.AllocatorManager;
 
@@ -11,6 +12,7 @@ public class Room : MonoBehaviour
     public List<Door> doors = new();
     public List<Block> blocks = new();
     public List<Item> items = new();
+    public List<Character> enemies = new();
     public List<ObservableValue<int>> state_door = new() { new(0,5), new(0, 5), new(0, 5), new(0, 5), new(0, 5) };
     private void Awake()
     {
@@ -48,22 +50,46 @@ public class Room : MonoBehaviour
     }
     public void GenerateItem(Transform transform,int item_index,bool CanCollect)
     {
-        items.Add(Instantiate(ItemManager.instance.prefab_item[item_index].gameObject,
-                  transform.position,
-                  Quaternion.identity,
-                  transform).GetComponent<Item>());
-        items[^1].gameObject.SetActive(true);
-        if (CanCollect)
-            return;
-        if (items[^1].index == 1)
+        if(CanCollect)
         {
-            items[^1].transform.position = new Vector3(items[^1].transform.position.x, items[^1].transform.position.y - 0.65f, 0f);
-            items[^1].transform.SetParent(this.transform,true);
-            items[^1].GetComponent<Rigidbody2D>().velocity = new Vector2(transform.gameObject.GetComponent<Rigidbody2D>().velocity.x / 5f, transform.gameObject.GetComponent<Rigidbody2D>().velocity.y / 5f);
-            items[^1].GetComponent<Bomb>().SetAnim_before_Explode();
-            items[^1].canCollect = false;
+            items.Add(Instantiate(ItemManager.instance.prefab_item[item_index].gameObject,
+                      transform.position,
+                      Quaternion.identity,
+                      transform).GetComponent<Item>()); 
+            items[^1].gameObject.SetActive(true);
+        } 
+        else
+        {
+            GameObject item = Instantiate(ItemManager.instance.prefab_item[item_index].gameObject,
+                                          transform.position,
+                                          Quaternion.identity,
+                                          transform);
+            item.transform.position = new Vector3(item.transform.position.x, item.transform.position.y - 0.65f, 0f);
+            item.transform.SetParent(this.transform,true);
+            item.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.gameObject.GetComponent<Rigidbody2D>().velocity.x / 5f, transform.gameObject.GetComponent<Rigidbody2D>().velocity.y / 5f);
+            item.SetActive(true);
+            item.GetComponent<Bomb>().SetAnim_before_Explode();
+            item.GetComponent<Item>().canCollect = false;
         }
             
+    }
+    public void RemoveItem(Item item)
+    {
+        items.Remove(item);
+    }
+    public void GenerateEnemy(Transform transform,int index_enemy)
+    {
+        enemies.Add(Instantiate(EnemyManager.instance.prefab_enemy[index_enemy],
+                                transform.position,
+                                Quaternion.identity,
+                                transform).GetComponent<Character>());
+        enemies[^1].gameObject.SetActive(true);
+        RefreshCurrentDoor_byEnemy();
+    }
+    public void RemoveEnemy(Character character)
+    {
+        enemies.Remove(character);
+        RefreshCurrentDoor_byEnemy();
     }
     private bool CheckExistBlock(int pos_x, int pos_y)
     {
@@ -73,5 +99,24 @@ public class Room : MonoBehaviour
                 return true;
         }
         return false;
+    }
+    public void RefreshCurrentDoor_byEnemy()
+    {
+        if(enemies.Count == 0)
+        {
+            SetCurrentRoomDoorState(Door.STATE.openAfterBattling);
+        }
+        else
+        {
+            Debug.Log("RefreshCurrentDoor CLOSE");
+            SetCurrentRoomDoorState(Door.STATE.closedWhenBattling);
+        }
+    }
+    private void SetCurrentRoomDoorState(Door.STATE state)
+    {
+        for(int i=1;i<=4;i++)
+        {
+            doors[i].SetNewState(state,true);
+        }
     }
 }

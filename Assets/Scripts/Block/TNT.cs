@@ -25,6 +25,6 @@ public class TNT : Block
     }
     private void MyDestroy()
     {
-        Destroy(explosion);
+        Destroy(gameObject);
     }
 }

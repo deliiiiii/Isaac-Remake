@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingLayerID: 190754901
+  m_SortingLayer: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 2026748975, guid: abe3d10ce0c93f0478342160d0d24f44, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,9 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite_openNormal: {fileID: 2026748975, guid: abe3d10ce0c93f0478342160d0d24f44, type: 3}
-  sprite_closedWithoutLock: {fileID: 910381399, guid: abe3d10ce0c93f0478342160d0d24f44, type: 3}
+  sprite_closed_normal: {fileID: 910381399, guid: abe3d10ce0c93f0478342160d0d24f44, type: 3}
   sprite_closedWithOneLock: {fileID: -1322671217, guid: abe3d10ce0c93f0478342160d0d24f44, type: 3}
-  state: 0
+  base_state: 0
 --- !u!50 &3356811268939026585
 Rigidbody2D:
   serializedVersion: 4

@@ -61,7 +61,7 @@ public class ObservableValue<T>
             }
             case 1://¸üÐÂÑªÁ¿UI
             {
-                    Debug.Log("HP :" + oldValue + " -> " + newValue);
+                //Debug.Log("HP :" + oldValue + " -> " + newValue);
                 UIManager.instance.RefreshHPUI();
                 break;
             }

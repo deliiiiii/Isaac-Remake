@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &754962451198995362
 Transform:
   m_ObjectHideFlags: 0
@@ -76,9 +76,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 25
+  m_SortingLayerID: 2039438919
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 580107291, guid: 1f97ffeeb025f2e49811e3c0c8ce3695, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,7 +102,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.75
   m_LinearDrag: 3.8
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -285,9 +285,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 25
+  m_SortingLayerID: 2039438919
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: df7a45fbad5db6647bac5ce5c07af487, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -311,6 +311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9b09cfa1aec9b43b625329e5c6a126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explodeForce: 0.4
+  damageToEnemy: 5
 --- !u!50 &6385486552590014721
 Rigidbody2D:
   serializedVersion: 4

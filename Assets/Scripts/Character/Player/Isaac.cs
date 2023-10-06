@@ -7,6 +7,7 @@ public class Isaac : Character
     private void Start()
     {
         type = TYPE.player;
+        index = 0;
 
         maxHP = 14;
         curHP = new ObservableValue<int>(0, 1);
@@ -20,13 +21,13 @@ public class Isaac : Character
         character_Shade.transform.localPosition = new Vector3(0,-c_height,0);
         moveSpeed = 5.0f;
         frictionSpeed = new Vector2 (0.4f, 0.4f);
-        tearDamage = 3.5f;
-        tearShootCD = 0.8f;
+        tearDamage = 6;
+        tearShootCD = 0.5f;
         tearShootTimer = tearShootCD;
-        tearSpeed = 10f;
+        tearSpeed = 11f;
         tearSpeedDivisionWhileMoving = 4.5f;
         tearRange = 4.0f;
-        tearSize = 0.62f;
+        tearSize = 0.7f;
     }
     private void FixedUpdate()
     {
@@ -36,6 +37,13 @@ public class Isaac : Character
     {
         base.InputShoot();
         base.InputSkills();
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ItemManager.instance.prefab_item[0].count.Value += 20;
+            ItemManager.instance.prefab_item[1].count.Value += 20;
+            ItemManager.instance.prefab_item[2].count.Value += 20;
+        }
     }
     //public override void InputMove()
     //{

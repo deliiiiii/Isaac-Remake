@@ -18,6 +18,7 @@ public class CameraController : MonoBehaviour
         BlockManager.instance.ReadBlock();
         ItemManager.instance.ReadItem();
         UIManager.instance.AddTextToList();
+        EnemyManager.instance.ReadEnemy();
 
         ItemManager.instance.prefab_item[0].count.Value = 0;
         ItemManager.instance.prefab_item[1].count.Value = 66;
@@ -25,7 +26,7 @@ public class CameraController : MonoBehaviour
 
         //RoomManager.instance.currentRoom.Value.GenerateBlock(0, 5);
         //RoomManager.instance.currentRoom.Value.GenerateBlock(1, 3);
-        //RoomManager.instance.currentRoom.Value.GenerateBlock(2, 20);
+        RoomManager.instance.currentRoom.Value.GenerateBlock(2, 3);
         RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 0,true);
         RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 1,true);
         RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 2,true);

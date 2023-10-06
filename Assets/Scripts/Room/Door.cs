@@ -8,7 +8,7 @@ public class Door : MonoBehaviour
     private BoxCollider2D boxCollider2d;
     private CircleCollider2D circleCollider2d;
     public Sprite sprite_openNormal;
-    public Sprite sprite_closedWithoutLock;
+    public Sprite sprite_closed_normal;
     public Sprite sprite_closedWithOneLock;
     //public Sprite sprite_closedWithTwoLock;
     public enum STATE
@@ -26,8 +26,8 @@ public class Door : MonoBehaviour
         openAfterBattling,
         closedWhenBattling,
     }
-    public STATE state;
-
+    public STATE base_state;
+    private STATE temp_state;
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -38,33 +38,33 @@ public class Door : MonoBehaviour
     {
         
     }
-    public void SetState(STATE newState,bool isM)
+    public void SetBaseState(STATE newBaseState,bool isM)
     {
-        state = newState;
-        switch (state)
+        base_state = newBaseState;
+        switch (newBaseState)
         {
             case STATE.Disabled:
                 {
                     SetActiveDoor(false, false);
+                    GetComponent<SpriteRenderer>().sprite = null;
                     break;
                 }
-
             case STATE.openNormal:
                 {
                     SetActiveDoor(true, false);
                     GetComponent<SpriteRenderer>().sprite = sprite_openNormal;
                     break;
                 }
-            case STATE.openAfterBattling:
-                {
-                    SetActiveDoor(true, false);
-                    break;
-                }
-            case STATE.closedWhenBattling:
-                {
-                    SetActiveDoor(true, true);
-                    break;
-                }
+            //case STATE.openAfterBattling:
+            //    {
+            //        SetActiveDoor(true, false);
+            //        break;
+            //    }
+            //case STATE.closedWhenBattling:
+            //    {
+            //        SetActiveDoor(true, true);
+            //        break;
+            //    }
             case STATE.openAward:
                 break;
             case STATE.openBoss:
@@ -74,7 +74,7 @@ public class Door : MonoBehaviour
             case STATE.closed_normal:
                 {
                     SetActiveDoor(true, true);
-                    GetComponent<SpriteRenderer>().sprite = sprite_closedWithoutLock;
+                    GetComponent<SpriteRenderer>().sprite = sprite_closed_normal;
                     break;
                 }
             case STATE.closed_1_Lock:
@@ -90,7 +90,29 @@ public class Door : MonoBehaviour
                 break;
         }
         if(!isM)
-            RoomManager.instance.RefreshDoorState(newState);
+            RoomManager.instance.RefreshDoorState(newBaseState);
+    }
+    public void SetNewState(STATE newTempState,bool isM)
+    {
+        Debug.Log("TempState = " + newTempState);
+        temp_state = newTempState;
+        switch(newTempState)
+        {
+            case STATE.openAfterBattling:
+                {
+                    SetActiveDoor(true, false);
+                    break;
+                }
+            case STATE.closedWhenBattling:
+                {
+                    SetActiveDoor(true, true);
+                    break;
+                }
+            default: break;
+        }
+        SetDoorSprite(base_state, temp_state);
+        if (!isM)
+            RoomManager.instance.RefreshDoorState(newTempState);
     }
     private void SetActiveDoor(bool active,bool closed)
     {
@@ -107,6 +129,24 @@ public class Door : MonoBehaviour
             spriteRenderer.enabled = true;
             boxCollider2d.enabled = closed;
             circleCollider2d.enabled = true;
+        }
+    }
+
+    private void SetDoorSprite(STATE baseState,STATE tempState)
+    {
+        if(tempState == STATE.openAfterBattling)
+        {
+            //if (baseState == STATE.closed_1_Lock)
+            //    return;
+            //if (baseState == STATE.closed_2_Lock)
+            //    return;
+            if (baseState == STATE.openNormal)
+                GetComponent<SpriteRenderer>().sprite = sprite_openNormal;
+        }
+        if(tempState == STATE.closedWhenBattling)
+        {
+            if (baseState == STATE.openNormal)
+                GetComponent<SpriteRenderer>().sprite = sprite_closed_normal;
         }
     }
 }

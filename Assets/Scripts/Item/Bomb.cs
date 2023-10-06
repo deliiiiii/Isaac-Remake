@@ -26,6 +26,7 @@ public class Bomb : Item
     {
         GetComponent<CircleCollider2D>().excludeLayers += characterHead;
         GetComponent<CircleCollider2D>().excludeLayers += characterBody;
+        
         GetComponent<Animator>().SetTrigger("Explode");
     }
     private void SetAnim_after_Explode()
