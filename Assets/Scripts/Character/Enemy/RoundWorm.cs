@@ -13,9 +13,9 @@ public class RoundHead : Character
         type = TYPE.enemy;
         index = 2;
 
-        maxHP = 20;
+        maxHP = new ObservableValue<int>(20, -1);
         curHP = new ObservableValue<int>(0, -1);
-        curHP.Value = maxHP;
+        curHP.Value = maxHP.Value;
 
 
         c_height = 0.6f; 

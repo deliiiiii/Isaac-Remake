@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
         ClearChild(panel_HP);
         int generatedHP = 0;
         int filledRedHP = GameManager.instance.player.curHP.Value;
-        int maxRedHP = GameManager.instance.player.maxHP;
+        int maxRedHP = GameManager.instance.player.maxHP.Value;
         for (int i=0;i+1< filledRedHP; i+=2)
         {
             Instantiate(redHP_Full, panel_HP.transform);

@@ -11,9 +11,9 @@ public class Fatty : Character
         type = TYPE.enemy;
         index = 3;
 
-        maxHP = 25;
+        maxHP = new ObservableValue<int>(100, -1);
         curHP = new ObservableValue<int>(0, -1);//TODO enemy HP
-        curHP.Value = maxHP;
+        curHP.Value = maxHP.Value;
 
 
         c_height = 1.1f;

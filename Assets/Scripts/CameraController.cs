@@ -14,11 +14,17 @@ public class CameraController : MonoBehaviour
     }
     private void Start()
     {
+        EnemyManager.instance.ReadEnemy();
+        PlayerManager.instance.ReadPlayer();
+        PlayerManager.instance.SetPlayer(0);
+        
         RoomManager.instance.AddRoomToList();
         BlockManager.instance.ReadBlock();
         ItemManager.instance.ReadItem();
         UIManager.instance.AddTextToList();
-        EnemyManager.instance.ReadEnemy();
+        
+
+        
 
         ItemManager.instance.prefab_item[0].count.Value = 0;
         ItemManager.instance.prefab_item[1].count.Value = 66;

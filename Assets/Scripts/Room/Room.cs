@@ -108,7 +108,7 @@ public class Room : MonoBehaviour
         }
         else
         {
-            Debug.Log("RefreshCurrentDoor CLOSE");
+            //Debug.Log("RefreshCurrentDoor CLOSE");
             SetCurrentRoomDoorState(Door.STATE.closedWhenBattling);
         }
     }

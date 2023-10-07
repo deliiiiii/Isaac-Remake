@@ -93,6 +93,11 @@ public class Tear : MonoBehaviour
             {0,0.6f,-0.6f,0,0},
             {0,0.6f,-0.6f,-0.2f,-0.2f}//·ÀÖ¹×Óµ¯ÌùÇ½·¢ÉäµÄÎ»ÒÆÐÞ¸´
         };
+        int[,] dir_2 = new int[2, 5]
+        {
+            {0,0,0,-1,1 },
+            {0,1,-1,0,0 },
+        };
         GameObject gene_tear = Instantiate(gameObject, new Vector3(user.transform.position.x + dir[0,direction], user.transform.position.y + dir[2, direction], transform.position.z), Quaternion.identity);
         gene_tear.SetActive(true);
         gene_tear.transform.localScale = new Vector3(user.GetComponent<Character>().tearSize, user.GetComponent<Character>().tearSize, 1f);
@@ -105,8 +110,8 @@ public class Tear : MonoBehaviour
         gene_tear.GetComponent<Tear>().tear_Shade.transform.localScale = new Vector3(0.5f,0.2f,1f);
         gene_tear.GetComponent<Rigidbody2D>().velocity = new Vector2
             (
-            user.GetComponent<Rigidbody2D>().velocity.x/ user.GetComponent<Character>().tearSpeedDivisionWhileMoving + dir[0, direction] * user.GetComponent<Character>().tearSpeed,
-            user.GetComponent<Rigidbody2D>().velocity.y/ user.GetComponent<Character>().tearSpeedDivisionWhileMoving + dir[1, direction] * user.GetComponent<Character>().tearSpeed
+            user.GetComponent<Rigidbody2D>().velocity.x/ user.GetComponent<Character>().tearSpeedDivisionWhileMoving + dir_2[0, direction] * user.GetComponent<Character>().tearSpeed,
+            user.GetComponent<Rigidbody2D>().velocity.y/ user.GetComponent<Character>().tearSpeedDivisionWhileMoving + dir_2[1, direction] * user.GetComponent<Character>().tearSpeed
             );
     }
     public void GenerateTear(GameObject user, Vector3 direction)

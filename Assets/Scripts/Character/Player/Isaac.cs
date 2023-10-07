@@ -9,11 +9,11 @@ public class Isaac : Character
         type = TYPE.player;
         index = 0;
 
-        maxHP = 14;
+        maxHP = new ObservableValue<int>(14, 1);
         curHP = new ObservableValue<int>(0, 1);
         tempHP = new ObservableValue<int>(0, 1);
         blackHP = new ObservableValue<int>(0, 1);
-        curHP.Value = maxHP;
+        curHP.Value = maxHP.Value;
         tempHP.Value = 0;
         blackHP.Value = 0;
 
@@ -24,7 +24,7 @@ public class Isaac : Character
         tearDamage = 6;
         tearShootCD = 0.5f;
         tearShootTimer = tearShootCD;
-        tearSpeed = 11f;
+        tearSpeed = 6.5f;
         tearSpeedDivisionWhileMoving = 4.5f;
         tearRange = 4.0f;
         tearSize = 0.7f;

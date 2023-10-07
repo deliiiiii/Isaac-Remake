@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class Character : MonoBehaviour
 {
@@ -9,7 +8,7 @@ public class Character : MonoBehaviour
 
     public int index;
     public ObservableValue<int> curHP;
-    public int maxHP;
+    public ObservableValue<int> maxHP;
     public ObservableValue<int> tempHP;
     public ObservableValue<int> blackHP;
 
@@ -49,6 +48,7 @@ public class Character : MonoBehaviour
 
     public GameObject character_Shade;
     public Tear tear;
+    public Tear purpleTear;
 
     protected Rigidbody2D rb;
     protected Animator anim;
@@ -87,6 +87,7 @@ public class Character : MonoBehaviour
             return;
         if(collision.gameObject.CompareTag("Item"))
         {
+
             if (!collision.gameObject.GetComponent<Item>().canCollect)
                 return;
             int index_colliding = collision.gameObject.GetComponent<Item>().index;
@@ -95,22 +96,37 @@ public class Character : MonoBehaviour
                 ItemManager.instance.prefab_item[index_colliding].count.Value += collision.gameObject.GetComponent<Item>().value;
             else if (index_colliding >= 3 && index_colliding <= 4)
             {
-                if (curHP.Value == maxHP)
+                if (curHP.Value == maxHP.Value)
                     return;
                 if(index_colliding == 3)
                 {
-                    if (curHP.Value + 2 <= maxHP)
+                    if (curHP.Value + 2 <= maxHP.Value)
                         curHP.Value += 2;
                     else
-                        curHP.Value = maxHP;
+                        curHP.Value = maxHP.Value;
                 }
                 else if (index_colliding == 4)
                 {
-                    if (curHP.Value + 1 <= maxHP)
+                    if (curHP.Value + 1 <= maxHP.Value)
                         curHP.Value += 1;
                     else
-                        curHP.Value = maxHP;
+                        curHP.Value = maxHP.Value;
                 }
+            }
+            else if (index_colliding == 8)
+            {
+                tear = purpleTear;
+            }
+            else if(index_colliding == 9)
+            {
+                maxHP.Value += 2;
+                moveSpeed += 0.8f;
+                tearShootCD -= 0.4f;
+                tearDamage += 1;
+            }
+            else if(index_colliding == 10)
+            {
+                PlayerManager.instance.SetPlayer(1);
             }
             RoomManager.instance.currentRoom.Value.RemoveItem(collision.gameObject.GetComponent<Item>());
             Destroy(collision.gameObject);

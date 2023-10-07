@@ -13,9 +13,9 @@ public class Spider : Character
         type = TYPE.enemy;
         index = 0;
 
-        maxHP = 11;
+        maxHP = new ObservableValue<int>(11, -1);
         curHP = new ObservableValue<int>(0, -1);//TODO enemy HP
-        curHP.Value = maxHP;
+        curHP.Value = maxHP.Value;
 
 
         c_height = 0.3f;

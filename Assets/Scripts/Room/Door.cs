@@ -94,7 +94,7 @@ public class Door : MonoBehaviour
     }
     public void SetNewState(STATE newTempState,bool isM)
     {
-        Debug.Log("TempState = " + newTempState);
+        //Debug.Log("TempState = " + newTempState);
         temp_state = newTempState;
         if(base_state == STATE.Disabled)
         {
