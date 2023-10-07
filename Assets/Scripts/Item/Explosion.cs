@@ -32,15 +32,17 @@ public class Explosion : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Enemy"))
         {
+            if (!collision.gameObject.GetComponent<Character>())
+                return;
             //Debug.Log("Bomb TO Enemy");
             collision.gameObject.GetComponent<Character>().MDamage(damageToEnemy);
             Vector2 dir = collision.gameObject.transform.position - transform.position;
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(dir.normalized * explodeForce, ForceMode2D.Impulse);
         }
-        if(collision.gameObject.CompareTag("Item"))
-        {
-            Vector2 dir = collision.gameObject.transform.position - transform.position;
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(dir.normalized * explodeForce, ForceMode2D.Impulse);
-        }
+        //if(collision.gameObject.CompareTag("Item"))
+        //{
+        //    Vector2 dir = collision.gameObject.transform.position - transform.position;
+        //    collision.gameObject.GetComponent<Rigidbody2D>().AddForce(dir.normalized * explodeForce, ForceMode2D.Impulse);
+        //}
     }
 }

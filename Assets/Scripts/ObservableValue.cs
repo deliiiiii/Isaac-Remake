@@ -70,17 +70,22 @@ public class ObservableValue<T>
                 UIManager.instance.RefreshItemUI();
                 break;
             }
+            case 3://更新生成器UI
+            {
+                UIManager.instance.RefreshGeneratorUI();
+                break;
+            }
             case 4://更新摄像头位置
             {
                 //Debug.Log(CameraController.instance == null);
                 CameraController.instance.CallRefreshPosition();
                 break;
             }
-            case 5://更新房门状态
-            {
-                RoomManager.instance.RefreshDoorState();
-                break;
-            }
+            //case 5://更新房门状态
+            //{
+            //    RoomManager.instance.RefreshDoorState();
+            //    break;
+            //}
             case 6://更新角色状态
             {
                 if(typeof(T) == typeof(Character.STATE))

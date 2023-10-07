@@ -22,19 +22,19 @@ public class PlayerManager : MonoBehaviour
     }
     public void SetPlayer(int index_player)
     {
-        Debug.Log("SetPlayer index = " + index_player);
+        //Debug.Log("SetPlayer index = " + index_player);
         if(GameManager.instance.player)
         {
-            //Transform oldTranform = GameManager.instance.player.transform;
-            //Character oldCharacter = GameManager.instance.player;
+            Transform oldTranform = GameManager.instance.player.transform;
+            Character oldCharacter = GameManager.instance.player.GetComponent<Character>();
 
 
-            GameManager.instance.player.gameObject.SetActive(false);
-            GameManager.instance.player = prefab_player[index_player].GetComponent<Character>();
-            GameManager.instance.player.gameObject.SetActive(true);
+            GameManager.instance.player.SetActive(false);
+            GameManager.instance.player = prefab_player[index_player];
+            GameManager.instance.player.SetActive(true);
 
-            //GameManager.instance.player.transform.SetPositionAndRotation(oldTranform.position, oldTranform.rotation);
-            //GameManager.instance.player.transform.localScale = oldTranform.localScale;
+            GameManager.instance.player.transform.SetPositionAndRotation(oldTranform.position, oldTranform.rotation);
+            GameManager.instance.player.transform.localScale = oldTranform.localScale;
 
             //GameManager.instance.player.curHP.Value = oldCharacter.curHP.Value;
             //GameManager.instance.player.maxHP.Value = oldCharacter.maxHP.Value;
@@ -62,7 +62,7 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            GameManager.instance.player = prefab_player[index_player].GetComponent<Character>();
+            GameManager.instance.player = prefab_player[index_player];
             GameManager.instance.player.gameObject.SetActive(true);
         }
 

@@ -14,28 +14,7 @@ public class CameraController : MonoBehaviour
     }
     private void Start()
     {
-        EnemyManager.instance.ReadEnemy();
-        PlayerManager.instance.ReadPlayer();
-        PlayerManager.instance.SetPlayer(0);
         
-        RoomManager.instance.AddRoomToList();
-        BlockManager.instance.ReadBlock();
-        ItemManager.instance.ReadItem();
-        UIManager.instance.AddTextToList();
-        
-
-        
-
-        ItemManager.instance.prefab_item[0].count.Value = 0;
-        ItemManager.instance.prefab_item[1].count.Value = 66;
-        ItemManager.instance.prefab_item[2].count.Value = 2;
-
-        //RoomManager.instance.currentRoom.Value.GenerateBlock(0, 5);
-        RoomManager.instance.currentRoom.Value.GenerateBlock(1, 10);
-        //RoomManager.instance.currentRoom.Value.GenerateBlock(2, 8);
-        //RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 0,true);
-        //RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 1,true);
-        //RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 2,true);
     }
     public void CallRefreshPosition()
     {
@@ -59,7 +38,7 @@ public class CameraController : MonoBehaviour
                 transform.position.y + iden_delta.y * speed_ChangeRoom,
                 transform.position.z);
             Vector3 iden_delta_after = (target - transform.position).normalized;
-            if (iden_delta.x * iden_delta_after.x < 0 || iden_delta.y * iden_delta_after.y < 0)
+            if (iden_delta.x * iden_delta_after.x < 0 || iden_delta.y * iden_delta_after.y < 0)// exceed target position : stop moving camera
             {
                 //Debug.Log("B2");
                 transform.position = new Vector3(target.x,target.y,transform.position.z);

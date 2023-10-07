@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class TreasureChest : Item
 {
-    public bool isInfinite = true;
+    //public bool isInfinite = true;
     public bool isLocked;
-    public bool isClosed;
+    private bool isClosed = true;
     public float bounceForce = 8f;
     public Sprite sprite_locked;
     public Sprite sprite_unlocked;
@@ -19,14 +19,14 @@ public class TreasureChest : Item
     }
     public void OpenChest()
     {
-        if (isClosed && !isInfinite)
+        if (!isClosed)
             return;
         for(int i=0;i<rewards_item.Count;i++)
         {
             Bounce(rewards_item[i]);
         }
         GetComponent<SpriteRenderer>().sprite = sprite_unlocked;
-        isClosed = true;
+        isClosed = isLocked = false;
     }
 
     private void Bounce(Item obj)

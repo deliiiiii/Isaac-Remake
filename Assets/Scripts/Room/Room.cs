@@ -13,7 +13,17 @@ public class Room : MonoBehaviour
     public List<Block> blocks = new();
     public List<Item> items = new();
     public List<Character> enemies = new();
-    public List<ObservableValue<int>> state_door = new() { new(0,5), new(0, 5), new(0, 5), new(0, 5), new(0, 5) };
+    //public List<ObservableValue<int>> state_door = new() { new(0,5), new(0, 5), new(0, 5), new(0, 5), new(0, 5) };
+    public bool hasExplored = false;
+    public enum ROOMTYPE
+    {
+        initial,
+        battle,
+        item,
+        treasure,
+        boss,
+    };
+    public ROOMTYPE type;
     private void Awake()
     {
         pos_world = new Vector3(transform.position.x-0.5f,transform.position.y-0.5f,transform.position.z);
@@ -48,14 +58,22 @@ public class Room : MonoBehaviour
             
         }
     }
-    public Item GenerateItem(Transform transform,int item_index,bool CanCollect)
+    public Item GenerateItem(Transform transform,int item_index,bool isRandomPos)
     {
         if(item_index != 5)
         {
-            items.Add(Instantiate(ItemManager.instance.prefab_item[item_index].gameObject,
-                      transform.position,
-                      Quaternion.identity,
-                      transform).GetComponent<Item>()); 
+            int ran_x = UnityEngine.Random.Range(-6, 7);
+            int ran_y = UnityEngine.Random.Range(-3, 4);
+            if (isRandomPos)
+                items.Add(Instantiate(ItemManager.instance.prefab_item[item_index].gameObject,
+                          new Vector3(transform.position.x + ran_x, transform.position.y + ran_y, 0f),
+                          Quaternion.identity,
+                          transform).GetComponent<Item>());
+            else
+                items.Add(Instantiate(ItemManager.instance.prefab_item[item_index].gameObject,
+                                      transform.position,
+                                      Quaternion.identity,
+                                      transform).GetComponent<Item>());
             items[^1].gameObject.SetActive(true);
             return items[^1];
         } 
@@ -79,6 +97,7 @@ public class Room : MonoBehaviour
     }
     public void GenerateEnemy(Transform transform,int index_enemy)
     {
+        //Debug.Log("GenerateEnemy : " + index_enemy);
         enemies.Add(Instantiate(EnemyManager.instance.prefab_enemy[index_enemy],
                                 transform.position,
                                 Quaternion.identity,
@@ -104,11 +123,11 @@ public class Room : MonoBehaviour
     {
         if(enemies.Count == 0)
         {
+            GenerateItem(transform, UnityEngine.Random.Range(0, 8), false);
             SetCurrentRoomDoorState(Door.STATE.openAfterBattling);
         }
         else
         {
-            //Debug.Log("RefreshCurrentDoor CLOSE");
             SetCurrentRoomDoorState(Door.STATE.closedWhenBattling);
         }
     }
@@ -116,7 +135,7 @@ public class Room : MonoBehaviour
     {
         for(int i=1;i<=4;i++)
         {
-            doors[i].SetNewState(state,true);
+            doors[i].SetNewState(state/*,true*/);
         }
     }
 }

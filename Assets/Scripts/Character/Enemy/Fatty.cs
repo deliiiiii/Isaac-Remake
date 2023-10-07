@@ -12,7 +12,7 @@ public class Fatty : Character
         index = 3;
 
         maxHP = new ObservableValue<int>(100, -1);
-        curHP = new ObservableValue<int>(0, -1);//TODO enemy HP
+        curHP = new ObservableValue<int>(0, -1);
         curHP.Value = maxHP.Value;
 
 
@@ -39,7 +39,7 @@ public class Fatty : Character
 
 
         skill_loadTimer.Add(1.5f);
-        skill_loadCD.Add(4.0f);
+        skill_loadCD.Add(2.0f);
         skill_usingMaxTime.Add(9999f);
         skill_usingTimer.Add(0f);
         skill_range.Add(2f);

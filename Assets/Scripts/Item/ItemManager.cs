@@ -30,6 +30,9 @@ public class ItemManager : MonoBehaviour
             instance.prefab_item.Add(gameObject.transform.GetChild(i).GetComponent<Item>());
             instance.prefab_item[i].index = i;
         }
+        prefab_item[0].count.Value = 0;
+        prefab_item[1].count.Value = 1;
+        prefab_item[2].count.Value = 2;
         //RefreshItemUI();
     }
 

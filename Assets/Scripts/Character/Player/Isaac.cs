@@ -38,12 +38,12 @@ public class Isaac : Character
         base.InputShoot();
         base.InputSkills();
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ItemManager.instance.prefab_item[0].count.Value += 20;
-            ItemManager.instance.prefab_item[1].count.Value += 20;
-            ItemManager.instance.prefab_item[2].count.Value += 20;
-        }
+        //if(Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    ItemManager.instance.prefab_item[0].count.Value += 20;
+        //    ItemManager.instance.prefab_item[1].count.Value += 20;
+        //    ItemManager.instance.prefab_item[2].count.Value += 20;
+        //}
     }
     //public override void InputMove()
     //{

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    private int curEnemy = 0;
+    //private int curEnemy = 0;
 
     public int index;
     public ObservableValue<int> curHP;
@@ -76,8 +76,34 @@ public class Character : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Enemy TO Player");
+            //Debug.Log("Enemy TO Player");
             collision.gameObject.GetComponent<Character>().MDamage(1);
+        }
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            int index_colliding = collision.gameObject.GetComponent<Item>().index;
+            Debug.Log("colliding Item : " + index_colliding);
+            if (index_colliding >= 3 && index_colliding <= 4)
+            {
+                if (curHP.Value == maxHP.Value)
+                    return;
+                if (index_colliding == 3)
+                {
+                    if (curHP.Value + 2 <= maxHP.Value)
+                        curHP.Value += 2;
+                    else
+                        curHP.Value = maxHP.Value;
+                }
+                else if (index_colliding == 4)
+                {
+                    if (curHP.Value + 1 <= maxHP.Value)
+                        curHP.Value += 1;
+                    else
+                        curHP.Value = maxHP.Value;
+                }
+            }
+            RoomManager.instance.currentRoom.Value.RemoveItem(collision.gameObject.GetComponent<Item>());
+            Destroy(collision.gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -94,25 +120,25 @@ public class Character : MonoBehaviour
             Debug.Log("colliding Item : " + index_colliding);
             if(collision.gameObject.GetComponent<Item>().index < 3)
                 ItemManager.instance.prefab_item[index_colliding].count.Value += collision.gameObject.GetComponent<Item>().value;
-            else if (index_colliding >= 3 && index_colliding <= 4)
-            {
-                if (curHP.Value == maxHP.Value)
-                    return;
-                if(index_colliding == 3)
-                {
-                    if (curHP.Value + 2 <= maxHP.Value)
-                        curHP.Value += 2;
-                    else
-                        curHP.Value = maxHP.Value;
-                }
-                else if (index_colliding == 4)
-                {
-                    if (curHP.Value + 1 <= maxHP.Value)
-                        curHP.Value += 1;
-                    else
-                        curHP.Value = maxHP.Value;
-                }
-            }
+            //else if (index_colliding >= 3 && index_colliding <= 4)
+            //{
+            //    if (curHP.Value == maxHP.Value)
+            //        return;
+            //    if(index_colliding == 3)
+            //    {
+            //        if (curHP.Value + 2 <= maxHP.Value)
+            //            curHP.Value += 2;
+            //        else
+            //            curHP.Value = maxHP.Value;
+            //    }
+            //    else if (index_colliding == 4)
+            //    {
+            //        if (curHP.Value + 1 <= maxHP.Value)
+            //            curHP.Value += 1;
+            //        else
+            //            curHP.Value = maxHP.Value;
+            //    }
+            //}
             else if (index_colliding == 8)
             {
                 tear = purpleTear;
@@ -120,9 +146,9 @@ public class Character : MonoBehaviour
             else if(index_colliding == 9)
             {
                 maxHP.Value += 2;
-                moveSpeed += 0.8f;
-                tearShootCD -= 0.4f;
-                tearDamage += 1;
+                moveSpeed += 0.2f;
+                tearShootCD -= 0.035f;
+                tearDamage += 2;
             }
             else if(index_colliding == 10)
             {
@@ -131,13 +157,13 @@ public class Character : MonoBehaviour
             RoomManager.instance.currentRoom.Value.RemoveItem(collision.gameObject.GetComponent<Item>());
             Destroy(collision.gameObject);
         }
-        if(collision.gameObject.CompareTag("Block"))
+        if (collision.gameObject.CompareTag("Block"))
         {
-            if(!collision.gameObject.GetComponent<TreasureChest>())
+            if (!collision.gameObject.GetComponent<TreasureChest>())
                 return;
             if (ItemManager.instance.prefab_item[2].count.Value <= 0)
                 return;
-            if (!collision.gameObject.GetComponent<TreasureChest>().isLocked)
+            if (collision.gameObject.GetComponent<TreasureChest>().isLocked)
                 ItemManager.instance.prefab_item[2].count.Value--;
             Debug.Log("Player TO TreasureChest");
             collision.gameObject.GetComponent<TreasureChest>().OpenChest();
@@ -275,26 +301,27 @@ public class Character : MonoBehaviour
                 if (ItemManager.instance.prefab_item[1].count.Value <= 0)
                     return;
                 ItemManager.instance.prefab_item[1].count.Value--;
-                RoomManager.instance.currentRoom.Value.GenerateItem(transform, 5, false);
-                count--;
-            }
-                
-        }
-        if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            curEnemy++;
-            if (curEnemy == EnemyManager.instance.prefab_enemy.Count)
-                curEnemy = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            int count = 1;
-            while(count > 0)
-            {
-                RoomManager.instance.currentRoom.Value.GenerateEnemy(RoomManager.instance.currentRoom.Value.gameObject.transform, curEnemy);
+                RoomManager.instance.currentRoom.Value.GenerateItem(transform, 5,false);
                 count--;
             }
         }
+        //if(Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    curEnemy++;
+        //    if (curEnemy == EnemyManager.instance.prefab_enemy.Count)
+        //        curEnemy = 0;
+        //}
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    int count = 1;
+        //    while(count > 0)
+        //    {
+        //        RoomManager.instance.currentRoom.Value.GenerateEnemy(RoomManager.instance.currentRoom.Value.gameObject.transform, curEnemy);
+        //        count--;
+        //    }
+        //}
+        if (Input.GetKeyDown(KeyCode.R))
+            RoomManager.instance.GenerateFloor();
     }
 
     public virtual void EmitSkill() 
@@ -388,7 +415,7 @@ public class Character : MonoBehaviour
     {
         anim.SetBool("Move", true);
         anim.SetBool("Idle", false);
-        Character player = GameManager.instance.player;
+        Character player = GameManager.instance.player.GetComponent<Character>();
         if (CheckNear(player.transform.position, transform.position, skill_range[0]))
         {
             skill_emit[0] = true;

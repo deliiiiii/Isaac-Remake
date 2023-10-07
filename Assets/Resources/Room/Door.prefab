@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3356811268939026585}
   - component: {fileID: 7125575677224177509}
   - component: {fileID: 1415346573981826944}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: Door
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite_openNormal: {fileID: 2026748975, guid: abe3d10ce0c93f0478342160d0d24f44, type: 3}
+  sprite_openBoss: {fileID: 21300000, guid: 91fd8f49b506e024ababbf698ff508cf, type: 3}
   sprite_closed_normal: {fileID: 910381399, guid: abe3d10ce0c93f0478342160d0d24f44, type: 3}
   sprite_closedWithOneLock: {fileID: -1322671217, guid: abe3d10ce0c93f0478342160d0d24f44, type: 3}
   base_state: 0

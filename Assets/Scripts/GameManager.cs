@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Character player;
+    public GameObject player;
     //private enum GameState
     //{
     //    Menu_Idle,
@@ -19,10 +19,28 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
     }
-    //private void Start()
-    //{
-    //    instance.gameState.Value = GameState.Menu_Idle;
-    //}
+    private void Start()
+    {
+        //instance.gameState.Value = GameState.Menu_Idle; 
+        EnemyManager.instance.ReadEnemy();
+        PlayerManager.instance.ReadPlayer();
+        PlayerManager.instance.SetPlayer(0);
+
+        RoomManager.instance.GenerateFloor();
+        BlockManager.instance.ReadBlock();
+        ItemManager.instance.ReadItem();
+        UIManager.instance.Initialize();
+
+
+        
+
+        //RoomManager.instance.currentRoom.Value.GenerateBlock(0, 5);
+        //RoomManager.instance.currentRoom.Value.GenerateBlock(1, 10);
+        //RoomManager.instance.currentRoom.Value.GenerateBlock(2, 8);
+        //RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 0,true);
+        //RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 1,true);
+        //RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 2,true);
+    }
     public void RefreshState()
     {
         Debug.Log("RefreshState");
