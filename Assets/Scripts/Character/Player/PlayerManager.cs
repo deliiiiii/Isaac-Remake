@@ -6,7 +6,6 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     public List<GameObject> prefab_player = new();
-    public GameObject curPlayer = null;
     private void Awake()
     {
         instance = this;
@@ -20,50 +19,65 @@ public class PlayerManager : MonoBehaviour
             instance.prefab_player[i].GetComponent<Character>().index = i;
         }
     }
-    public void SetPlayer(int index_player)
+    public void SetPlayer(int index_player,bool IsRestart)
     {
         //Debug.Log("SetPlayer index = " + index_player);
         if(GameManager.instance.player)
         {
-            Transform oldTranform = GameManager.instance.player.transform;
-            Character oldCharacter = GameManager.instance.player.GetComponent<Character>();
+            if(!IsRestart)
+            {
+                Transform oldTranform = GameManager.instance.player.transform;
+                Character oldCharacter = GameManager.instance.player.GetComponent<Character>();
+                Tear oldTear = GameManager.instance.player.GetComponent<Character>().tear;
 
+                GameManager.instance.player.SetActive(false);
+                GameManager.instance.player = Instantiate(prefab_player[index_player], gameObject.transform);
+                GameManager.instance.player.SetActive(true);
 
-            GameManager.instance.player.SetActive(false);
-            GameManager.instance.player = prefab_player[index_player];
-            GameManager.instance.player.SetActive(true);
+                GameManager.instance.player.transform.SetPositionAndRotation(oldTranform.position, oldTranform.rotation);
+                GameManager.instance.player.transform.localScale = oldTranform.localScale;
 
-            GameManager.instance.player.transform.SetPositionAndRotation(oldTranform.position, oldTranform.rotation);
-            GameManager.instance.player.transform.localScale = oldTranform.localScale;
+                GameManager.instance.player.GetComponent<Character>().hasEnabled = true;
 
-            //GameManager.instance.player.curHP.Value = oldCharacter.curHP.Value;
-            //GameManager.instance.player.maxHP.Value = oldCharacter.maxHP.Value;
-            //GameManager.instance.player.tempHP.Value = oldCharacter.tempHP.Value;
-            //GameManager.instance.player.blackHP.Value = oldCharacter.blackHP.Value;
+                GameManager.instance.player.GetComponent<Character>().curHP = new(-1, 1);
+                GameManager.instance.player.GetComponent<Character>().maxHP = new(-1, 1);
+                GameManager.instance.player.GetComponent<Character>().tempHP = new(-1, 1);
+                GameManager.instance.player.GetComponent<Character>().blackHP = new(-1, 1);
+                GameManager.instance.player.GetComponent<Character>().curHP.Value = oldCharacter.curHP.Value;
+                GameManager.instance.player.GetComponent<Character>().maxHP.Value = oldCharacter.maxHP.Value;
+                GameManager.instance.player.GetComponent<Character>().tempHP.Value = oldCharacter.tempHP.Value;
+                GameManager.instance.player.GetComponent<Character>().blackHP.Value = oldCharacter.blackHP.Value;
 
-            //GameManager.instance.player.hurtCD = oldCharacter.hurtCD;
-            //GameManager.instance.player.hurtTimer = oldCharacter.hurtTimer;
-            //GameManager.instance.player.isHurt = oldCharacter.isHurt;
+                GameManager.instance.player.GetComponent<Character>().hurtCD = oldCharacter.hurtCD;
+                GameManager.instance.player.GetComponent<Character>().hurtTimer = oldCharacter.hurtTimer;
+                GameManager.instance.player.GetComponent<Character>().isHurt = oldCharacter.isHurt;
 
-            //GameManager.instance.player.c_height = oldCharacter.c_height;
-            //GameManager.instance.player.moveSpeed = oldCharacter.moveSpeed;
-            //GameManager.instance.player.frictionSpeed = oldCharacter.frictionSpeed;
+                GameManager.instance.player.GetComponent<Character>().c_height = oldCharacter.c_height;
+                GameManager.instance.player.GetComponent<Character>().moveSpeed = oldCharacter.moveSpeed;
+                GameManager.instance.player.GetComponent<Character>().frictionSpeed = oldCharacter.frictionSpeed;
 
+                GameManager.instance.player.GetComponent<Character>().tear = oldTear;
+                GameManager.instance.player.GetComponent<Character>().tearShootCD = oldCharacter.tearShootCD;
+                GameManager.instance.player.GetComponent<Character>().tearShootTimer = oldCharacter.tearShootTimer;
+                GameManager.instance.player.GetComponent<Character>().tearSpeed = oldCharacter.tearSpeed;
+                GameManager.instance.player.GetComponent<Character>().tearSpeedDivisionWhileMoving = oldCharacter.tearSpeedDivisionWhileMoving;
+                GameManager.instance.player.GetComponent<Character>().tearRange = oldCharacter.tearRange;
+                GameManager.instance.player.GetComponent<Character>().tearDamage = oldCharacter.tearDamage;
+                GameManager.instance.player.GetComponent<Character>().tearSize = oldCharacter.tearSize;
+            }
 
-            //GameManager.instance.player.tear = oldCharacter.tear;
-            //GameManager.instance.player.tearShootCD = oldCharacter.tearShootCD;
-            //GameManager.instance.player.tearShootTimer = oldCharacter.tearShootTimer;
-            //GameManager.instance.player.tearSpeed = oldCharacter.tearSpeed;
-            //GameManager.instance.player.tearRange = oldCharacter.tearRange;
-            //GameManager.instance.player.tearDamage = oldCharacter.tearDamage;
-            //GameManager.instance.player.tearSize = oldCharacter.tearSize;
-
-            //GameManager.instance.player = oldCharacter;
+            else
+            {
+                GameManager.instance.player.SetActive(false);
+                GameManager.instance.player = Instantiate(prefab_player[index_player], gameObject.transform);
+                GameManager.instance.player.SetActive(true);
+            }
+            //Destroy(transform.GetChild(prefab_player.Count).gameObject);
         }
         else
         {
-            GameManager.instance.player = prefab_player[index_player];
-            GameManager.instance.player.gameObject.SetActive(true);
+            GameManager.instance.player = Instantiate(prefab_player[index_player], gameObject.transform);
+            GameManager.instance.player.SetActive(true);
         }
 
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     //private int curEnemy = 0;
+    public bool hasEnabled = false;
 
     public int index;
     public ObservableValue<int> curHP;
@@ -48,6 +49,7 @@ public class Character : MonoBehaviour
 
     public GameObject character_Shade;
     public Tear tear;
+    public Tear whiteTear;
     public Tear purpleTear;
 
     protected Rigidbody2D rb;
@@ -152,7 +154,7 @@ public class Character : MonoBehaviour
             }
             else if(index_colliding == 10)
             {
-                PlayerManager.instance.SetPlayer(1);
+                PlayerManager.instance.SetPlayer(1,false);
             }
             RoomManager.instance.currentRoom.Value.RemoveItem(collision.gameObject.GetComponent<Item>());
             Destroy(collision.gameObject);
@@ -321,7 +323,11 @@ public class Character : MonoBehaviour
         //    }
         //}
         if (Input.GetKeyDown(KeyCode.R))
+        {
+            PlayerManager.instance.SetPlayer(0,true);
             RoomManager.instance.GenerateFloor();
+        }
+            
     }
 
     public virtual void EmitSkill() 
@@ -416,6 +422,8 @@ public class Character : MonoBehaviour
         anim.SetBool("Move", true);
         anim.SetBool("Idle", false);
         Character player = GameManager.instance.player.GetComponent<Character>();
+        if (!player)
+            return;
         if (CheckNear(player.transform.position, transform.position, skill_range[0]))
         {
             skill_emit[0] = true;

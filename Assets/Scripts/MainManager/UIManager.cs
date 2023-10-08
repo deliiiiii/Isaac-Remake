@@ -6,6 +6,28 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+
+    [Header("Menu")]
+    public GameObject arrow_Selected; 
+    public GameObject panel_Menu;
+    public GameObject panel_Menu_2;
+    public GameObject text_NewRun;
+    public GameObject text_Continue;
+    public Sprite sprite_Continue_T;
+    public Sprite sprite_Continue_F;
+    public GameObject text_ReturnTitle;
+    public GameObject panel_Paused;
+    public GameObject text_Resume;
+    public GameObject text_Menu_pause;
+    public GameObject panel_Restart;
+    public GameObject text_Restart;
+    public GameObject text_Menu_restart;
+    //public Button button_Exit;
+    //public Button button_Restart;
+    private Dictionary<GameObject, List<GameObject>> dic_list_Text;
+    private ObservableValue<int> index_selectedMenu = new(-1,8);
+    private ObservableValue<int> index_selectedButton = new(-1, 8);
+
     [Header("Player Info")]
     public GameObject redHP_Full;
     public GameObject redHP_Half;
@@ -42,29 +64,150 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-            panel_CustomGenerator.SetActive(!panel_CustomGenerator.activeSelf);
-        if(panel_CustomGenerator.activeSelf)
+        if(GameManager.instance.gameState.Value == GameManager.GAMESTATE.Menu_Main)
         {
-            if (Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.Alpha0))
-                GenerateStuff();
-            if(Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
-                Minus_index_stuffCount();
-            if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
-                Plus_index_stuffCount();
-            if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4))
-                Minus_index_stuffName();
-            if (Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Alpha5))
-                Plus_index_stuffName();
-            if (Input.GetKeyDown(KeyCode.Keypad7) || Input.GetKeyDown(KeyCode.Alpha7))
-                Minus_index_objectType();
-            if (Input.GetKeyDown(KeyCode.Keypad8) || Input.GetKeyDown(KeyCode.Alpha8))
-                Plus_index_objectType();
-
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                    Application.Quit();
+                #endif
+            }
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                panel_Menu.SetActive(false);
+                MySetActive(panel_Menu_2);
+                return;// avoid Space key down twice
+            }
         }
-        
+        if(GameManager.instance.gameState.Value == GameManager.GAMESTATE.Menu_Idle)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                MySetActive(panel_Menu);
+                panel_Menu_2.SetActive(false);
+            }
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                if(index_selectedMenu.Value == 0)
+                {
+                    
+                    if (index_selectedButton.Value == 0)
+                    {
+                        panel_Menu_2.SetActive(false);
+                        GameManager.instance.StartNewGame();
+                    }
+                    if (index_selectedButton.Value == 1)
+                        if(GameManager.instance.ResumeGame())
+                            panel_Menu_2.SetActive(false);
+                    if (index_selectedButton.Value == 2)
+                    {
+                        MySetActive(panel_Menu);
+                        panel_Menu_2.SetActive(false);
+                    }
+                }
+            }
+        }
+        if (GameManager.instance.gameState.Value == GameManager.GAMESTATE.Menu_Paused)
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                Debug.Log("Pause Escape");
+                panel_Paused.SetActive(false);
+                GameManager.instance.ResumeGame();
+            }
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log("Pause SPACE");
+                panel_Paused.SetActive(false);
+                if (index_selectedButton.Value == 0)
+                    GameManager.instance.ResumeGame();
+                if (index_selectedButton.Value == 1)
+                    MySetActive(panel_Menu_2);
+            }
+        }
+        if (GameManager.instance.gameState.Value == GameManager.GAMESTATE.Menu_GameOver)
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                panel_Restart.SetActive(false);
+                if (index_selectedButton.Value == 0)
+                    GameManager.instance.StartNewGame();
+                if (index_selectedButton.Value == 1)
+                    MySetActive(panel_Menu_2);
+            }
+        if (GameManager.instance.gameState.Value == GameManager.GAMESTATE.Room_Idle)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Time.timeScale = 0f;
+                MySetActive(panel_Paused);
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.Alpha0))// TODO
+                panel_CustomGenerator.SetActive(!panel_CustomGenerator.activeSelf);
+            if (panel_CustomGenerator.activeSelf)
+            {
+                if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return))
+                    GenerateStuff();
+                if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
+                    Minus_index_stuffCount();
+                if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
+                    Plus_index_stuffCount();
+                if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4))
+                    Minus_index_stuffName();
+                if (Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Alpha5))
+                    Plus_index_stuffName();
+                if (Input.GetKeyDown(KeyCode.Keypad7) || Input.GetKeyDown(KeyCode.Alpha7))
+                    Minus_index_objectType();
+                if (Input.GetKeyDown(KeyCode.Keypad8) || Input.GetKeyDown(KeyCode.Alpha8))
+                    Plus_index_objectType();
+            }
+        }
+        if (GameManager.instance.gameState.Value == GameManager.GAMESTATE.Menu_Idle ||
+            GameManager.instance.gameState.Value == GameManager.GAMESTATE.Menu_Paused ||
+            GameManager.instance.gameState.Value == GameManager.GAMESTATE.Menu_GameOver)
+        {
+            if(Input.GetKeyDown(KeyCode.DownArrow))
+                DownSelectedText();
+            if(Input.GetKeyDown(KeyCode.UpArrow))
+                UpSelectedText();
+        }
+        //if (GameManager.instance.gameState.Value == GameManager.GAMESTATE.Menu_Paused)
+        //{
+        //    if(Input.GetKeyDown(KeyCode.Escape))
+        //    {
+        //        GameManager.instance.gameState.Value = GameManager.GAMESTATE.Room_Idle;
+        //        Time.timeScale = 1f;
+        //        panel_Paused.SetActive(false);
+        //    }
+        //}
 
 
+
+
+    }
+    public void MySetActive(GameObject obj)
+    {
+        if(obj == panel_Menu)
+        {
+            GameManager.instance.gameState.Value = GameManager.GAMESTATE.Menu_Main;
+        }
+        else if (obj == panel_Menu_2)
+        {
+            index_selectedMenu.Value = 0;
+            GameManager.instance.gameState.Value = GameManager.GAMESTATE.Menu_Idle;
+        }
+        else if (obj == panel_Paused)
+        {
+            index_selectedMenu.Value = 1;
+            GameManager.instance.gameState.Value = GameManager.GAMESTATE.Menu_Paused;
+        }
+        else if(obj == panel_Restart)
+        {
+            index_selectedMenu.Value = 2;
+            GameManager.instance.gameState.Value = GameManager.GAMESTATE.Menu_GameOver;
+        }
+        obj.SetActive(true);
     }
     public void Initialize()
     {
@@ -76,8 +219,9 @@ public class UIManager : MonoBehaviour
         button_PlusCount.onClick.AddListener(Plus_index_stuffCount);
         button_Generate.onClick.AddListener(GenerateStuff);
 
-        AddTextToList();
+        
         ReadStuffName();
+        AddTextToList();
     }
     public void ReadStuffName()
     {
@@ -107,7 +251,17 @@ public class UIManager : MonoBehaviour
             text_key,
         };
         RefreshItemUI();
+
+        dic_list_Text = new()
+        {
+            { panel_Menu_2,new(){ text_NewRun, text_Continue , text_ReturnTitle } },
+            { panel_Paused,new(){ text_Resume, text_Menu_pause } },
+            { panel_Restart,new(){ text_Restart, text_Menu_restart } },
+        };
+        index_selectedMenu.Value = 0;
+        index_selectedButton.Value = 0;
     }
+    
     public void RefreshItemUI()
     {
         for (int i = 0; i < list_ItemText.Count; i++)
@@ -137,7 +291,8 @@ public class UIManager : MonoBehaviour
         {
             Instantiate(redHP_Empty, panel_HP.transform);
         }
-            
+        if (GameManager.instance.player.GetComponent<Character>().curHP.Value <= 0)
+            GameManager.instance.EndLife();
     }
     public void RefreshGeneratorUI()
     {
@@ -239,8 +394,48 @@ public class UIManager : MonoBehaviour
         if (index_stuffCount.Value > 0)
         index_stuffCount.Value--;
     }
-    
 
+    public void RefreshMenuUI()
+    {
+        if (index_selectedButton.Value == -1 || index_selectedMenu.Value == -1)
+            return;
+        //Debug.Log("RefreshMenuUI" + index_selectedButton.Value + " " + index_selectedMenu.Value);
+        arrow_Selected.transform.SetParent(dic_list_Text[GetKeyByIndex(index_selectedMenu.Value)][index_selectedButton.Value].transform);
+        arrow_Selected.transform.localPosition = new Vector3(-240, 0, 0);
+    }
+    private GameObject GetKeyByIndex(int index)
+    {
+        int count = 0;
+        foreach (GameObject key in dic_list_Text.Keys)
+        {
+            if (count == index)
+            {
+                return key;
+            }
+            count++;
+        }
+        return null;
+    }
+    private void DownSelectedText()
+    {
+        
+        if (index_selectedButton.Value + 1 == dic_list_Text[GetKeyByIndex(index_selectedMenu.Value)].Count)
+        {
+            index_selectedButton.Value = 0;
+            return;
+        }
+        index_selectedButton.Value++;
+
+    }
+    private void UpSelectedText()
+    {
+        if (index_selectedButton.Value == 0)
+        {
+            index_selectedButton.Value = dic_list_Text[GetKeyByIndex(index_selectedMenu.Value)].Count - 1;
+            return;
+        }
+        index_selectedButton.Value--;
+    }
     private void ClearChild(GameObject parent)
     {
         Transform transform;

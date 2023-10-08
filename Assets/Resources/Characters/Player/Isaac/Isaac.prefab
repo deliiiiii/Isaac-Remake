@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e583debbc45737244875d1c5393b1120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasEnabled: 0
   index: 0
   hurtTimer: 0
   hurtCD: 1
@@ -243,7 +244,8 @@ MonoBehaviour:
   skill_range: []
   skill_emit: 
   character_Shade: {fileID: 8109947505009532191}
-  tear: {fileID: 5682853351791520119}
+  tear: {fileID: 0}
+  whiteTear: {fileID: 5682853351791520119}
   purpleTear: {fileID: 6845452328039484477}
   type: 0
 --- !u!50 &7015331592986111194

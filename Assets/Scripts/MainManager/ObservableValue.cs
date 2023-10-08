@@ -110,6 +110,11 @@ public class ObservableValue<T>
                 RoomManager.instance.RefreshBlockState();
                 break;
             }
+            case 8://¸üÐÂMenuUI
+            {
+                UIManager.instance.RefreshMenuUI();
+                break;
+            }
             default:
                 break;
         }

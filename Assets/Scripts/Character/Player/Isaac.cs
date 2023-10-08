@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Isaac : Character
 {
+   
     private void Start()
     {
+        
+        if (hasEnabled)
+            return;
         type = TYPE.player;
         index = 0;
 
-        maxHP = new ObservableValue<int>(14, 1);
+        tear = whiteTear;
+
+        maxHP = new ObservableValue<int>(2, 1);
         curHP = new ObservableValue<int>(0, 1);
         tempHP = new ObservableValue<int>(0, 1);
         blackHP = new ObservableValue<int>(0, 1);
@@ -28,13 +34,19 @@ public class Isaac : Character
         tearSpeedDivisionWhileMoving = 4.5f;
         tearRange = 4.0f;
         tearSize = 0.7f;
+
+        hasEnabled = true;
     }
     private void FixedUpdate()
     {
+        if (GameManager.instance.gameState.Value != GameManager.GAMESTATE.Room_Idle)
+            return;
         base.InputMove();
     }
     private void Update()
     {
+        if (GameManager.instance.gameState.Value != GameManager.GAMESTATE.Room_Idle)
+            return;
         base.InputShoot();
         base.InputSkills();
 
