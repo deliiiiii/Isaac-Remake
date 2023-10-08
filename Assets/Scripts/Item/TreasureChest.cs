@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal.VersionControl;
 using UnityEngine;
 
 public class TreasureChest : Item
@@ -33,7 +32,7 @@ public class TreasureChest : Item
     {
         obj = RoomManager.instance.currentRoom.Value.GenerateItem(gameObject.transform,obj.index,false);
         obj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        //生成随机数 -1或1
+        //random num -1 or 1
         int random_x = UnityEngine.Random.Range(0, 2) * 2 - 1;
         int random_y = UnityEngine.Random.Range(0, 2) * 2 - 1;
         obj.GetComponent<Rigidbody2D>().AddForce(new Vector2(random_x*bounceForce, random_y * bounceForce), ForceMode2D.Impulse);

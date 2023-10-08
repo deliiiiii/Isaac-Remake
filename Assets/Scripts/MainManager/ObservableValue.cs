@@ -54,11 +54,11 @@ public class ObservableValue<T>
         
         switch(valueType)
         {
-            case 0://根据UI/战斗状态进行更新
-            {
-                GameManager.instance.RefreshState();
-                break;
-            }
+            //case 0://根据UI/战斗状态进行更新
+            //{
+            //    GameManager.instance.RefreshState();
+            //    break;
+            //}
             case 1://更新血量UI
             {
                 //Debug.Log("HP :" + oldValue + " -> " + newValue);

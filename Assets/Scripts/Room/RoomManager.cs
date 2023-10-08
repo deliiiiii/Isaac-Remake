@@ -268,7 +268,7 @@ public class RoomManager : MonoBehaviour
         {
             if(currentRoom.Value.type == Room.ROOMTYPE.battle)
             {
-                currentRoom.Value.hasExplored = true;
+                //dcurrentRoom.Value.hasExplored = true;
                 currentRoom.Value.GenerateEnemy(currentRoom.Value.transform, UnityEngine.Random.Range(0, EnemyManager.instance.prefab_enemy.Count));
             }
             else if(currentRoom.Value.type == Room.ROOMTYPE.item)

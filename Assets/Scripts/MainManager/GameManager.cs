@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour
         //RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 1,true);
         //RoomManager.instance.currentRoom.Value.GenerateItem(RoomManager.instance.currentRoom.Value.transform, 2,true);
     }
-    public void RefreshState()
-    {
-        Debug.Log("RefreshState");
-    }
+    //public void RefreshState()
+    //{
+    //    Debug.Log("RefreshState");
+    //}
 }

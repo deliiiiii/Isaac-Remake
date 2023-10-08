@@ -66,7 +66,7 @@ public class Room : MonoBehaviour
             int ran_y = UnityEngine.Random.Range(-3, 4);
             if (isRandomPos)
                 items.Add(Instantiate(ItemManager.instance.prefab_item[item_index].gameObject,
-                          new Vector3(transform.position.x + ran_x, transform.position.y + ran_y, 0f),
+                          new Vector3(transform.position.x + ran_x - 0.5f, transform.position.y + ran_y - 0.5f, 0f),
                           Quaternion.identity,
                           transform).GetComponent<Item>());
             else
@@ -77,11 +77,23 @@ public class Room : MonoBehaviour
             items[^1].gameObject.SetActive(true);
             return items[^1];
         } 
+        else
         {
-            GameObject item = Instantiate(ItemManager.instance.prefab_item[item_index].gameObject,
-                                          transform.position,
-                                          Quaternion.identity,
-                                          transform);
+            GameObject item;
+            if(isRandomPos)
+            {
+                int ran_x = UnityEngine.Random.Range(-6, 7);
+                int ran_y = UnityEngine.Random.Range(-3, 4);
+                item = Instantiate(ItemManager.instance.prefab_item[item_index].gameObject,
+                                   new Vector3(transform.position.x + ran_x - 0.5f, transform.position.y + ran_y - 0.5f, 0f),
+                                   Quaternion.identity,
+                                   transform);
+            }
+            else 
+                item = Instantiate(ItemManager.instance.prefab_item[item_index].gameObject,
+                                   transform.position,
+                                   Quaternion.identity,
+                                   transform);
             item.transform.position = new Vector3(item.transform.position.x, item.transform.position.y - 0.65f, 0f);
             item.transform.SetParent(this.transform,true);
             item.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.gameObject.GetComponent<Rigidbody2D>().velocity.x / 5f, transform.gameObject.GetComponent<Rigidbody2D>().velocity.y / 5f);
@@ -99,7 +111,7 @@ public class Room : MonoBehaviour
     {
         //Debug.Log("GenerateEnemy : " + index_enemy);
         enemies.Add(Instantiate(EnemyManager.instance.prefab_enemy[index_enemy],
-                                transform.position,
+                                new Vector3(transform.position.x-0.5f,transform.position.y-0.5f,0f),
                                 Quaternion.identity,
                                 transform).GetComponent<Character>());
         enemies[^1].gameObject.SetActive(true);
@@ -123,7 +135,12 @@ public class Room : MonoBehaviour
     {
         if(enemies.Count == 0)
         {
-            GenerateItem(transform, UnityEngine.Random.Range(0, 8), false);
+            if(RoomManager.instance.currentRoom.Value.hasExplored == false)
+            {
+                RoomManager.instance.currentRoom.Value.hasExplored = true;
+                RoomManager.instance.currentRoom.Value.GenerateItem(transform, UnityEngine.Random.Range(0, 8), false);
+            }
+            //GenerateItem(transform, UnityEngine.Random.Range(0, 8), false);
             SetCurrentRoomDoorState(Door.STATE.openAfterBattling);
         }
         else

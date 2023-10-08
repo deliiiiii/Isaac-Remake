@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
     public Text text_StuffName;
     public Text text_StuffCount;
     public Button button_Generate;
-    private List<string> string_objectType= new (){ "Enemy", "Item","Block" };
+    private List<string> string_stuffType= new (){ "Enemy", "Item","Block" };
     private List<List<string>> string_stuffName = new List<List<string>>();
     private ObservableValue<int> index_objectType = new(0,3);
     private ObservableValue<int> index_stuffName = new(0,3);
@@ -145,7 +145,7 @@ public class UIManager : MonoBehaviour
             button_MinusType.interactable = false;
         else
             button_MinusType.interactable = true;
-        if(index_objectType.Value == string_objectType.Count - 1)
+        if(index_objectType.Value == string_stuffType.Count - 1)
             button_PlusType.interactable = false;
         else
             button_PlusType.interactable = true;
@@ -173,7 +173,7 @@ public class UIManager : MonoBehaviour
             button_PlusCount.interactable = false;
         else
             button_PlusCount.interactable = true;
-        text_ObjectType.text = string_objectType[index_objectType.Value];
+        text_ObjectType.text = string_stuffType[index_objectType.Value];
         text_StuffName.text = string_stuffName[index_objectType.Value][index_stuffName.Value];
         text_StuffCount.text = index_stuffCount.Value.ToString();
     }
@@ -208,7 +208,7 @@ public class UIManager : MonoBehaviour
     public void Plus_index_objectType()
     {
         index_stuffName.Value = 0;
-        if(index_objectType.Value < string_objectType.Count - 1)
+        if(index_objectType.Value < string_stuffType.Count - 1)
             index_objectType.Value++;
         
     }
